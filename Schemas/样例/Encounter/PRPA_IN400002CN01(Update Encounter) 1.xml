@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN400002CN01 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 ../../multicacheschemas/PRPA_IN400002CN01.xsd"
+ xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+     <!-- 消息ID, 该ID在所有消息中是唯一的，ACK中TargetMessage的ID必须和该ID保持一致-->
+    <id root="2.16.840.1.113883.1.6" extension="345435"/>
+     <!-- 消息创建时间 -->
+     <creationTime value="20111129220000"/>
+     <!-- 交互ID(HL7交互类型代码系统) 用来区分消息类型，PRPA_IN400001CN01代表患者挂号或入院信息-->
+     <interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN400002CN01"/>
+     <!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+     <processingCode code="P"/>
+     <!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+     <processingModeCode code="T"/>
+     <!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+     <acceptAckCode code="AL"/>
+     <!-- 接受者 -->
+     <receiver typeCode="RCV">
+          <!-- 接收设备/应用 -->
+          <device classCode="DEV" determinerCode="INSTANCE">
+               <!-- 接收者ID(接收设备/应用ID) root="接收者ID" extension="接受机构"-->
+               <id root="1" extension="接受机构"/>
+          </device>
+     </receiver>
+     <!-- 发送者 -->
+     <sender typeCode="SND">
+          <!-- 发送设备/应用 -->
+          <device classCode="DEV" determinerCode="INSTANCE">
+               <!-- 发送者ID(发送设备/应用ID) -->
+               <!-- root="发送者ID" extension="发送机构" -->
+               <id root="2" extension="发送机构"/>
+          </device>
+     </sender>
+    <controlActProcess classCode="CACT" moodCode="EVN">
+        <subject typeCode="SUBJ">
+            <encounterEvent classCode="ENC" moodCode="EVN">
+                 <!-- 表示一次就诊的唯一标识，用来标识一次门诊、急诊、住院等，EncounterNumber -->
+                <id root="hhggg" extension="就诊ID"/>
+                
+                 <!-- 就诊类型，比如门诊、急诊、住院、体检等 -->
+                <code code="就诊类型编码" codeSystem="encountertype" displayName="住院"/>
+
+                <!-- 就诊状态，一个更新的就诊的状态为active，当就诊结束后，状态为completed -->
+                <statusCode code="active" />
+                 <!-- 就诊时间，如果是门急诊，则只需要填写low即可，如果是住院，low代表入院日期，high代表出院日期 -->
+                <effectiveTime>
+                    <low value="20180101" />                  
+                    <high value="20180105" />                   
+                </effectiveTime>
+                 <!-- 就诊优先级 -->
+                <priorityCode code="优先级代码" codeSystem="prioritysystem" displayName="﻿一般，危急，病重"/>
+
+                <!-- 保密代码 -->
+                <confidentialityCode code="code131" codeSystem="codeSystem67" displayName="very strict"/>
+
+                <!-- 就诊原因,可以多个 -->
+                <reasonCode code="code133" codeSystem="codeSystem69" displayName="reason"/>
+
+                 <!-- 患者挂号或入院来源，比如﻿窗口挂号、预约挂号、微信挂号、电话预约挂号 -->
+                <admissionReferralSourceCode code="code135" codeSystem="codeSystem71" displayName="微信挂号"/>
+
+                <!-- 住院天数 -->
+                <lengthOfStayQuantity value="0" unit="unit23" />                   
+                <!-- 出院处置，比如回家，死完火化，转院等 -->
+                <dischargeDispositionCode code="code139" codeSystem="codeSystem75" displayName="回家"/>
+
+                 <!-- 号源编码，比如﻿普通、专家、特需 -->
+                <specialCourtesiesCode code="号源编码" codeSystem="type" displayName="特需"/>
+
+                <!-- 患者关键信息 -->
+                <subject typeCode="SBJ">
+                    <patient classCode="PAT">
+                        <!-- 患者ID，可以多个 -->
+                        <id root="patientidroot" extension="234324"/>
+                            
+                        <patientPerson classCode="PSN" determinerCode="INSTANCE">
+                            <!-- 人员ID信息，可以多个 -->
+                            <id root="personid" extension="3454"/>
+                            <!-- 姓名 -->
+                            <name>张三
+                            </name>
+                            <!-- 性别 -->
+                            <administrativeGenderCode code="0" codeSystem="codeSystem79" displayName="男"/>
+                            <!-- 出生地 -->
+                            <birthplace classCode="BIRTHPL">
+                                 <birthplace classCode="PLC" determinerCode="INSTANCE">
+                                      <addr use="PUB">
+                                          <state>省</state>
+                                          <city>市</city>
+                                          <streetAddressLine>地址</streetAddressLine>
+                                          <postalCode>邮编</postalCode>
+                                      </addr>
+                                 </birthplace>
+                            </birthplace>
+                        </patientPerson>
+                        <providerOrganization classCode="ORG" determinerCode="INSTANCE">
+                            <name>北京大学第一医院
+                             </name>
+                        </providerOrganization>
+                    </patient>
+                </subject>
+                <!-- 挂号或入院操作员 -->
+                <admitter typeCode="ADM">
+                    <!-- 登记时间 -->
+                    <time value="20180101"/>
+                    
+                    <assignedAdmitter classCode="ASSIGNED">
+                         <id root="admittertime" extension="345345"/>
+                         <assignedAdmitterPerson classCode="PSN" determinerCode="INSTANCE">
+                             <name>入院登记员姓名
+                              </name>
+                         </assignedAdmitterPerson>
+                    </assignedAdmitter>
+                </admitter>
+                <attender typeCode="ATND">
+                    <time value="20180101"/>
+                    <assignedAttender classCode="ASSIGNED">
+                         <id root="attenderid" extension="465456"/>
+                         <assignedAttenderPerson classCode="PSN" determinerCode="INSTANCE">
+                             <name>主治医生姓名
+                              </name>
+                         </assignedAttenderPerson>
+                    </assignedAttender>
+                </attender>
+                <referrer typeCode="REF">
+                    <assignedReferrer classCode="ASSIGNED">
+                         <id root="referrerid" extension="345435"/>
+                         <assignedReferrerPerson classCode="PSN" determinerCode="INSTANCE">
+                             <name>转诊医生姓名
+                              </name>
+                         </assignedReferrerPerson>
+                         <representedReferrerOrganization classCode="ORG" determinerCode="INSTANCE">
+                             <name>转诊医院名
+                              </name>
+                         </representedReferrerOrganization>
+                    </assignedReferrer>
+                </referrer>
+                <consultant typeCode="CON">
+                    <time value="20180101"/>
+
+                    <assignedConsultant classCode="ASSIGNED">
+                         <id root="consultantid" extension="34534"/>
+                         <assignedConsultantPerson classCode="PSN" determinerCode="INSTANCE">
+                             <name>会诊医生姓名
+                              </name>
+                         </assignedConsultantPerson>
+                    </assignedConsultant>
+                </consultant>
+                <inFulfillmentOf typeCode="FLFS">                    
+                    <appointment classCode="ACT" moodCode="APT">
+                        <id root="scheduleid-root" extension="预约号"/>
+                        <code code="AM" codeSystem="dfhjsd" displayName="上午"/>
+                        <effectiveTime value="20180101"/>
+                    </appointment>
+                </inFulfillmentOf>
+                <!-- 入院相关诊断和问题，可以包含多个 -->
+                <reason typeCode="RSON">                 
+                    <observationDx classCode="OBS" moodCode="EVN">
+                        <code code="DX" codeSystem="LOINC" /> 
+                        <value code="诊断编码" codeSystem="ICD10" />
+                        <author typeCode="AUT">
+                             <assignedAuthor classCode="ASSIGNED">
+                                  <id root="authoridroot" extension="34534"/>
+                                  <assignedDxPerson classCode="PSN" determinerCode="INSTANCE">
+                                      <name>诊断医生姓名
+                                       </name>
+                                  </assignedDxPerson>
+                             </assignedAuthor>
+                        </author>
+                    </observationDx>
+                </reason>
+                <component typeCode="COMP">
+                     <administrationAge classCode="OBS" moodCode="EVN">
+                          <value value="20" unit="Y"/>                         
+                     </administrationAge>
+                </component>
+                <component1 typeCode="COMP">
+                     <administrationEncounterSeqNum classCode="OBS" moodCode="EVN">
+                          <value value="5" unit="次"/>
+                     </administrationEncounterSeqNum>
+                </component1>
+            </encounterEvent>
+        </subject>
+    </controlActProcess>
+</PRPA_IN400002CN01>

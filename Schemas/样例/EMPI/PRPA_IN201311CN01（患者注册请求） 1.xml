@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN201311CN01 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 ../../multicacheschemas/PRPA_IN201311CN01.xsd"
+ xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+	<!--
+患者基本信息新建服务
+-->
+	<!-- 消息ID, 该ID在所有消息中是唯一的，ACK中TargetMessage的ID必须和该ID保持一致-->
+	<id root="2.16.840.1.113883.1.6.8876" extension="123"/>
+	<!-- 消息创建时间 -->
+	<creationTime value="20111129220000"/>
+	<!-- 交互ID(HL7交互类型代码系统) 用来区分消息类型，PRPA_IN201311CN01代表患者注册请求-->
+	<interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN201311CN01"/>
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P"/>
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code="T"/>
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="AL"/>
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<!-- 接收设备/应用 -->
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接收者ID(接收设备/应用ID) root="接收者ID" extension="接受机构"-->
+			<id root="1" extension="接受机构"/>
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<!-- 发送设备/应用 -->
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID(发送设备/应用ID) -->
+			<!-- root="发送者ID" extension="发送机构" -->
+			<id root="2" extension="发送机构"/>
+		</device>
+	</sender>
+	<!-- 封装的消息内容 - Trigger Event Control Act wrapper -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<subject typeCode="SUBJ">
+			<registrationRequest classCode="REG" moodCode="RQO">
+				<statusCode/>
+				<subject1 typeCode="SBJ">
+					<patient classCode="PAT">
+						<!-- 各种标识符 患者在医院中的ID,可以包含多个，每一个标识放在一个item中-->
+						<id extension="1" root="1.2.156.112635.1.2.1.1" />
+						<id extension="2" root="1.2.156.112635.1.2.1.13" />
+						<id extension="3" root="1.2.156.112635.1.2.1.12" />
+						<id extension="4" root="1.2.156.112635.1.2.1.11" />
+						<id extension="5" root="1.2.156.112635.1.2.1.2" />
+						<id extension="6" root="1.2.156.112635.1.2.1.3"/>
+						
+						<!--患者基本信息（人相关）-->
+						<patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 身份证号及各种证件号
+							@extension: 证件号码
+							@root: 证件OID，通过该OID可以明确指明证件类型-->
+							<id extension="15001198807080982" root="1.2.156.112635.1.2.1.9"/>
+							<!--姓名 必须项已使用-->
+							<name>张三</name>
+							<!-- 家庭电话，电子邮件等联系方式
+							@use: 联系方式类型。PUB为联系电话，H为家庭电话
+							value: 前缀为区分电话还是电子邮件地址。电话无前缀，电子邮件前缀为mailto
+							电话默认值为空，电子邮件默认值为mailto:default-->
+							<!-- 患者电话或电子邮件 -->
+							
+							<telecom use="H" value="999-999-999999"/>
+							<telecom use="PUB" value="999-999-999999"/>
+							<telecom use="PUB" value="mailto:someone@company.com"/>	
+										
+							<!-- 性别代码 -->
+							<administrativeGenderCode code="1" codeSystem="1.2.156.112635.1.1.3" displayName="女"/>
+
+							<!-- 出生日期 -->
+							<birthTime value="20000101"/>							
+							
+							<!-- 地址，可以多个，每一个地址包含在一个item元素中 -->
+							<addr use="H">
+								<state>省</state>
+								<city>市</city>
+								<streetAddressLine>详细地址</streetAddressLine>
+								<postalCode>邮编</postalCode>
+							</addr>
+					
+							<!-- 婚姻状况类别代码 -->
+							<maritalStatusCode code="10" codeSystem="1.2.156.112635.1.1.4" displayName="已婚"/>
+							
+							<!-- 文化程度代码 -->
+							<educationLevelCode code="23" codeSystem="1.2.156.112635.1.1.8" displayName="硕士"/>
+							
+							<!-- 残疾代码，可以存在多个 -->
+							<disabilityCode code="45454" codeSystem="LOINC" displayName="残疾"/>
+						
+							<!-- 代码 -->
+							<religiousAffiliationCode code="34353333" codeSystem="1.2.156.112635.1.1.4" displayName="宗教"/>
+							
+							<!-- 种族代码 -->
+							<raceCode code="dfdgfg" codeSystem="1.2.156.112635.1.1.4" displayName="种族"/>
+							
+							<!--民族代码 -->
+							<ethnicGroupCode code="TJ" codeSystem="1.2.156.112635.1.1.5" displayName="民族"/>
+							
+							<!--雇佣关系 -->
+							<asEmployee classCode="EMP">
+								<!--职业编码系统名称/职业代码 -->
+								<code code="职业类型编码" codeSystem="1.2.156.112635.1.1.5" displayName="职业"/>
+								
+								<!-- 工作单位地址 -->
+								<addr use="WP">
+									<state>省</state>
+									<city>市</city>
+									<streetAddressLine>详细地址</streetAddressLine>
+									<postalCode>邮编</postalCode>
+								</addr>
+								<!-- 工作单位联系方式 -->
+								<telecom use="WP" value="999-999-999999"/>
+								<!--工作单位 -->
+								<employer determinerCode="INSTANCE" classCode="ORG">
+									<!--工作单位名称 -->
+									<name>某某公司名</name>
+								</employer>
+							</asEmployee>
+							<!--公民身份 -->
+							<asCitizen classCode="CIT">
+								<!--所属国家 必须项已使用-->
+								<politicalNation classCode="NAT" determinerCode="INSTANCE">
+									<code code="CN" codeSystem="1.2.156.112635.1.1.6" codeSystemName="国籍" displayName="中国"/>
+								</politicalNation>
+							</asCitizen>
+							<!-- 联系人 -->
+							<contactParty classCode="CON">
+								<!-- 与患者关系 -->
+								<code code="12" codeSystem="1.2.156.112635.1.1.18" displayName="与患者关系，比如 父亲，母亲等"/>
+								
+								<contactPerson classCode="PSN" determinerCode="INSTANCE">
+									<!-- 联系人姓名 -->
+									<name>联系人姓名
+									</name>
+									
+									<!-- 联系人电话或电子邮件, 可以存在多个，每一个联系方式包含在一个item中 -->
+									<telecom use="H" value="999-999-999999"/>
+									
+									<!-- 联系人地址 -->
+									<addr use="H">
+										<state>省</state>
+										<city>市</city>
+										<streetAddressLine>详细地址</streetAddressLine>
+										<postalCode>邮编</postalCode>
+									</addr>
+								</contactPerson>
+							</contactParty>
+							
+							<!--籍贯-->
+							<asNativePlace classCode="TERR">
+								<nativePlace classCode="PLC" determinerCode="INSTANCE">
+									<code code="籍贯编码" codeSystem="1.2.156.112635.1.1.6" displayName="浙江"/>
+								</nativePlace>
+							</asNativePlace>
+							
+							<!-- 出生地 -->
+							<birthplace classCode="BIRTHPL">
+								<birthplace classCode="PLC" determinerCode="INSTANCE">
+									<!-- 出生地可以指明到省级，市级，还可以指定到详细的地址 -->
+									<addr use="PUB">
+										<state>省</state>
+										<city>市</city>
+										<streetAddressLine>详细地址</streetAddressLine>
+										<postalCode>邮编</postalCode>
+									</addr>
+								</birthplace>
+							</birthplace>
+						</patientPerson>
+						<!-- 医疗机构信息  -->
+						<providerOrganization classCode="ORG" determinerCode="INSTANCE">
+							<!--医疗机构编码-->
+							<id root="weqwe" extension="1.2.156.112635.1.1.6"/>
+							<!--医疗机构名称 -->
+							<name>北京大学第一医院
+							</name>
+						</providerOrganization>
+						<!--医保，商保信息-->
+						<coveredPartyOf typeCode="COV">
+							<coverageRecord classCode="COV" moodCode="EVN">
+								<beneficiary typeCode="BEN">
+									<beneficiaryRole classCode="MBR">
+										<id root="1.2.156.112635.1.1.6.7" extension="新农合编号"/>
+										<code code="xxxx" codeSystem="1.2.156.112635.1.1.6.8" displayName="新农合"/>
+										<groupEnsuranceEntity classCode="ORG" determinerCode="INSTANCE">
+											<name>xxxx医保局
+											</name>
+										</groupEnsuranceEntity>
+									</beneficiaryRole>
+								</beneficiary>
+							</coverageRecord>
+						</coveredPartyOf>
+					</patient>
+				</subject1>
+				<!--作者，操作者-->
+				<author typeCode="AUT">
+					<assignedEntity classCode="ASSIGNED">
+						<!--工号-->
+						<id extension="工号" root="1.2.156.112635.1.1.2"/>
+						<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+							<name>操作者姓名
+							</name>
+						</assignedPerson>
+					</assignedEntity>
+				</author>
+			</registrationRequest>
+		</subject>
+	</controlActProcess>
+</PRPA_IN201311CN01>

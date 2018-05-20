@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN201305CN01 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 ../../multicacheschemas/PRPA_IN201305CN01.xsd"
+ xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+    <id root="1.2.840.114350.1.13.0.1.7.1.1" extension="35423"/>
+    <creationTime value="20070428150301"/>
+    <interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN201305CN01"/>
+    <processingCode code="P"/>
+    <processingModeCode code="T"/>
+    <acceptAckCode code="AL"/>
+    <receiver typeCode="RCV">
+        <device  classCode="DEV" determinerCode="INSTANCE">
+            <id root="1.2.840.114350.1.13.999.234" extension="erer"/>
+        </device>
+    </receiver>
+    <sender typeCode="SND">
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id root="1.2.840.114350.1.13.999.567" extension="34324"/>
+        </device>
+    </sender>
+    <controlActProcess  classCode="CACT" moodCode="EVN">
+        <code code="PRPA_TE201305UV02" codeSystem="2.16.840.1.113883.1.6"/>
+        <queryByParameter>
+            <!--当前查询的动作的唯一标识-->
+            <queryId root="1.2.840.114350.1.13.28.1.18.5.999" extension="18204"/>
+            <parameterList>
+                <livingSubjectAdministrativeGender>
+                    <value code="M"/>
+                </livingSubjectAdministrativeGender>
+                <livingSubjectBirthTime>
+                    <value>
+                        <low value="19630804"/>
+                        <high value="19730804"/>
+                    </value>
+                </livingSubjectBirthTime>
+                <livingSubjectName>
+                    <value>张飞
+                    </value>
+                </livingSubjectName>
+                <otherIDsScopingOrganization>
+                    <value root="1.2.840.114350.1.13.99997.2.3412" extension="12345"/>
+                    <value root="1.2.840.114350.1.13.99997.2.3413" extension="345"/>
+                </otherIDsScopingOrganization>
+                <patientTelecom>
+                    <value value="tel:66666666"></value>
+                </patientTelecom>
+            </parameterList>
+        </queryByParameter>
+    </controlActProcess>
+</PRPA_IN201305CN01>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN201309CN01 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 ../multicacheschemas/PRPA_IN201309CN01.xsd"
+ xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+    <id root="2220c1c4-87ef-11dc-b865-3603d6866807" extension="4545" />
+	<profileId root="1.2.156.112722.1.1.32" extension="erer"/>
+    <creationTime value="20070810140900"/>
+    <interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN201309CN01"/>
+    <processingCode code="P"/>
+    <processingModeCode code="T"/>
+    <acceptAckCode code="AL"/>
+    <receiver typeCode="RCV">
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id root="1.2.156.112722.1.1.31" extension="4545" />
+        </device>
+    </receiver>
+    <sender typeCode="SND">
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id root="1.2.156.112722.1.1.31" extension="4545" />
+        </device>
+    </sender>
+    <controlActProcess classCode="CACT" moodCode="EVN">
+        <queryByParameter>
+            <parameterList>
+                <!--期望返回的Domain ID：患者id，empiId，就诊卡号，门诊号，住院号，影像号，医保号-->
+                <dataSource>
+                    <value root="root" extension="dfdf"/>
+                </dataSource>
+                <!--查询条件ID：患者id，empiId，就诊卡号，门诊号，住院号，影像号，医保号-->
+                <patientIdentifier>
+                    <value root="root" extension="ewre"/>
+                </patientIdentifier>
+            </parameterList>
+        </queryByParameter>     
+    </controlActProcess>
+</PRPA_IN201309CN01>
