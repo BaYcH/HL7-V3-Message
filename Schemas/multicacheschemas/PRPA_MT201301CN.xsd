@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xs:schema xmlns:ex="urn:hl7-org/v3-example" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns="urn:hl7-org:v3"
-           targetNamespace="urn:hl7-org:v3"
-           elementFormDefault="qualified"><!--
+<xs:schema xmlns:ex="urn:hl7-org/v3-example" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:hl7-org:v3" targetNamespace="urn:hl7-org:v3" elementFormDefault="qualified">
+   <!--
 *****************************************************************************************************************
 * XML schema for message type PRPA_MT201301CN.
 * Source information:
@@ -28,7 +26,8 @@
   *
   * Contributors: Health Level Seven International - initial implementation
   ****************************************************************************************/			
-				--><xs:annotation>
+				-->
+   <xs:annotation>
       <xs:documentation>Generated using schema builder version 3.4.12. Stylesheets:
 Saved in XML file by RMIM Designer in Visio at 2018-05-08T16:09:39
  Flat to Serialization Transform: $Id: MIFStaticModelFlatToSerialization.xsl 8529 2011-02-09 20:49:58Z lloyd_mckenzie $
@@ -59,8 +58,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:element name="id" type="II" minOccurs="0" maxOccurs="1"/>
          <xs:element name="effectiveTime" type="TS" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="politicalNation" type="PRPA_MT201301CN.Nation" minOccurs="1"
-                     maxOccurs="1"/>
+         <xs:element name="politicalNation" type="PRPA_MT201301CN.Nation" minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
@@ -72,8 +70,8 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:element name="code" type="CD" minOccurs="0" maxOccurs="1"/>
          <xs:element name="addr" type="AD" minOccurs="0" maxOccurs="1"/>
          <xs:element name="telecom" type="TEL" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="employer" type="PRPA_MT201301CN.Employer" nillable="true" minOccurs="0"
-                     maxOccurs="1"/>
+         <xs:element name="statusCode" type="CD" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="employer" type="PRPA_MT201301CN.Employer" nillable="true" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
@@ -82,9 +80,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
    <xs:complexType name="PRPA_MT201301CN.AsNativePlace">
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
-         <xs:element name="nativePlace" type="PRPA_MT201301CN.NativePlace" nillable="true"
-                     minOccurs="0"
-                     maxOccurs="1"/>
+         <xs:element name="nativePlace" type="PRPA_MT201301CN.NativePlace" nillable="true" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
@@ -94,8 +90,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:element name="sequenceNumber" type="INT" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="beneficiaryRole" type="PRPA_MT201301CN.BeneficiaryRole" minOccurs="1"
-                     maxOccurs="1"/>
+         <xs:element name="beneficiaryRole" type="PRPA_MT201301CN.BeneficiaryRole" minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="typeCode" type="ParticipationBeneficiary" use="required"/>
@@ -105,10 +100,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:element name="id" type="II" minOccurs="0" maxOccurs="1"/>
          <xs:element name="code" type="CD" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="ensuranceEntity" type="PRPA_MT201301CN.EnsuranceEntity"
-                     nillable="true"
-                     minOccurs="0"
-                     maxOccurs="1"/>
+         <xs:element name="ensuranceEntity" type="PRPA_MT201301CN.EnsuranceEntity" nillable="true" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="classCode" type="RoleClassMember" use="required"/>
@@ -117,8 +109,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:element name="addr" type="AD" nillable="true" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="birthplace" type="PRPA_MT201301CN.Place" nillable="true" minOccurs="0"
-                     maxOccurs="1"/>
+         <xs:element name="birthplace" type="PRPA_MT201301CN.Place" nillable="true" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
@@ -128,9 +119,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:element name="code" type="CD" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="contactPerson" type="PRPA_MT201301CN.ContactPerson" nillable="true"
-                     minOccurs="0"
-                     maxOccurs="1"/>
+         <xs:element name="contactPerson" type="PRPA_MT201301CN.ContactPerson" nillable="true" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
@@ -152,8 +141,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:element name="effectiveTime" type="TS" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="beneficiary" type="PRPA_MT201301CN.Beneficiary" minOccurs="1"
-                     maxOccurs="unbounded"/>
+         <xs:element name="beneficiary" type="PRPA_MT201301CN.Beneficiary" minOccurs="1" maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
@@ -163,9 +151,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
    <xs:complexType name="PRPA_MT201301CN.CoveredParty">
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
-         <xs:element name="coverageRecord" type="PRPA_MT201301CN.CoverageRecord" nillable="true"
-                     minOccurs="1"
-                     maxOccurs="1"/>
+         <xs:element name="coverageRecord" type="PRPA_MT201301CN.CoverageRecord" nillable="true" minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
@@ -226,16 +212,10 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:element name="effectiveTime" type="TS" minOccurs="0" maxOccurs="1"/>
          <xs:element name="priorityNumber" type="INT" minOccurs="0" maxOccurs="1"/>
          <xs:element name="veryImportantPersonCode" type="CD" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="patientPerson" type="PRPA_MT201301CN.PatientPerson" minOccurs="1"
-                     maxOccurs="1"/>
-         <xs:element name="providerOrganization" type="PRPA_MT201301CN.ProviderOrganization"
-                     minOccurs="1"
-                     maxOccurs="1"/>
-         <xs:element name="subjectOf" type="PRPA_MT201301CN.Subject2" nillable="true" minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="coveredPartyOf" type="PRPA_MT201301CN.CoveredParty" nillable="true"
-                     minOccurs="1"
-                     maxOccurs="unbounded"/>
+         <xs:element name="patientPerson" type="PRPA_MT201301CN.PatientPerson" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="providerOrganization" type="PRPA_MT201301CN.ProviderOrganization" minOccurs="1" maxOccurs="1"/>
+         <xs:element name="subjectOf" type="PRPA_MT201301CN.Subject2" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="coveredPartyOf" type="PRPA_MT201301CN.CoveredParty" nillable="true" minOccurs="1" maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="classCode" type="RoleClassPatient" use="required"/>
@@ -257,20 +237,11 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:element name="religiousAffiliationCode" type="CD" minOccurs="0" maxOccurs="1"/>
          <xs:element name="raceCode" type="CD" minOccurs="0" maxOccurs="1"/>
          <xs:element name="ethnicGroupCode" type="CD" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="asEmployee" type="PRPA_MT201301CN.AsEmployee" nillable="true"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="asCitizen" type="PRPA_MT201301CN.AsCitizen" nillable="true" minOccurs="1"
-                     maxOccurs="unbounded"/>
-         <xs:element name="contactParty" type="PRPA_MT201301CN.ContactParty" nillable="true"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="birthPlace" type="PRPA_MT201301CN.Birthplace" nillable="true"
-            minOccurs="0"
-            maxOccurs="1"/>
-         <xs:element name="asNativePlace" type="PRPA_MT201301CN.AsNativePlace" nillable="true"
-                     minOccurs="0"
-                     maxOccurs="1"/>
+         <xs:element name="asEmployee" type="PRPA_MT201301CN.AsEmployee" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="asCitizen" type="PRPA_MT201301CN.AsCitizen" nillable="true" minOccurs="1" maxOccurs="unbounded"/>
+         <xs:element name="contactParty" type="PRPA_MT201301CN.ContactParty" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="birthPlace" type="PRPA_MT201301CN.Birthplace" nillable="true" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="asNativePlace" type="PRPA_MT201301CN.AsNativePlace" nillable="true" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="classCode" type="EntityClassPerson" use="required"/>
@@ -303,11 +274,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
    <xs:complexType name="PRPA_MT201301CN.Subject2">
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
-         <xs:element name="administrationObservation"
-                     type="PRPA_MT201301CN.AdministrationObservation"
-                     nillable="true"
-                     minOccurs="1"
-                     maxOccurs="1"/>
+         <xs:element name="administrationObservation" type="PRPA_MT201301CN.AdministrationObservation" nillable="true" minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>

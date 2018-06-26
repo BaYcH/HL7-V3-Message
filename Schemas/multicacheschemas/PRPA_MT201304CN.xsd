@@ -57,6 +57,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:element name="code" type="CD" minOccurs="0" maxOccurs="1"/>
          <xs:element name="addr" type="AD" minOccurs="0" maxOccurs="1"/>
          <xs:element name="telecom" type="TEL" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="statusCode" type="CD" minOccurs="0" maxOccurs="1"/>
          <xs:element name="employer" type="PRPA_MT201304CN.Employer" nillable="true" minOccurs="0"
                      maxOccurs="1"/>
       </xs:sequence>
