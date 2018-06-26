@@ -1,0 +1,36 @@
+﻿<PRPA_IN201309CN01 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="multicacheschemas/PRPA_IN201309CN01.xsd"
+ xmlns="urn:hl7-org:v3"
+ ITSVersion="XML_1.0">
+    <id root="xiaoxiOid"  extension="xiaoxi_jiaochasuoyin"/>
+	<profileId root="1.2.156.112722.1.1.32" extension="BS0104"/>
+    <creationTime value="20070810140900"/>
+    <interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN201309CN01"/>
+    <processingCode code="P"/>
+    <processingModeCode code="T"/>
+    <acceptAckCode code="AL"/>
+    <receiver typeCode="RCV">
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id root="1.2.156.112722.1.1.31" extension="S004" />
+        </device>
+    </receiver>
+    <sender typeCode="SND">
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id root="1.2.156.112722.1.1.31" extension="S007" />
+        </device>
+    </sender>
+    <controlActProcess classCode="CACT" moodCode="EVN">
+        <queryByParameter>
+            <parameterList>
+                <!--期望返回的Domain ID-->
+                <dataSource>
+                    <value root="1.2.156.112722.1.2.1.6" extension=""/>
+                </dataSource>
+                <!--查询条件ID-->
+                <patientIdentifier>
+                    <value root="1.2.156.112722.1.2.1.7" extension="000001"/>
+                </patientIdentifier>
+            </parameterList>
+        </queryByParameter>     
+    </controlActProcess>
+</PRPA_IN201309CN01>

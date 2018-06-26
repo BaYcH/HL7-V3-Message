@@ -1,0 +1,54 @@
+﻿  <PRPA_IN201305CN01 ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="multicacheschemas/PRPA_IN201305CN01.xsd">
+    <id root="xiaoxiOid" extension="xiaoxi_chaxun"/>
+	<profileId root="1.2.156.112722.1.1.32" extension="BS0103"/>
+    <creationTime value="20070428150301"/>
+    <interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN201305CN01"/>	
+    <processingCode code="P"/>
+    <processingModeCode code="T"/>
+    <acceptAckCode code="AL"/>
+    <receiver typeCode="RCV">
+        <device  classCode="DEV" determinerCode="INSTANCE">
+            <id root="1.2.156.112722.1.1.31" extension="S004"/>
+        </device>
+    </receiver>
+    <sender typeCode="SND">
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id root="1.2.156.112722.1.1.31" extension="S007"/>
+        </device>
+    </sender>
+    <controlActProcess  classCode="CACT" moodCode="EVN">
+        <queryByParameter>     
+            <parameterList>
+                <!--患者性别查询条件-->
+                <livingSubjectAdministrativeGender>
+                    <value code=""/>
+                </livingSubjectAdministrativeGender>
+                <!--患者出生日期查询条件-->
+                <livingSubjectBirthTime>
+                   <value value=""/>
+                </livingSubjectBirthTime>
+                <!--患者姓名查询条件-->
+                <livingSubjectName>
+                    <value></value>
+                </livingSubjectName>
+                <!--查询条件: 身份证-->
+                <livingSubjectId>
+                    <value extension="123456787654311111" root="1.2.156.112722.1.2.1.4"/>	
+                </livingSubjectId>
+                <!--患者在其他医院的ID条件-->              
+                <otherIDsScopingOrganization>
+                    <value root="1.2.840.114350.1.13.99997.2.3412"/>
+                    <semanticsText>OtherIDs.scopingOrganization.id</semanticsText>
+                </otherIDsScopingOrganization>
+                <otherIDsScopingOrganization>
+                    <value root="2.16.840.1.113883.4.1"/>
+                    <semanticsText>OtherIDs.scopingOrganization.id</semanticsText>
+                </otherIDsScopingOrganization>
+                <otherIDsScopingOrganization>
+                    <value root="1.2.840.114350.1.13.99998.8734"/>
+                    <semanticsText>OtherIDs.scopingOrganization.id</semanticsText>
+                </otherIDsScopingOrganization>
+            </parameterList>
+        </queryByParameter>
+    </controlActProcess>
+</PRPA_IN201305CN01>
