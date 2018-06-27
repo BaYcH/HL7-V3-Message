@@ -128,7 +128,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:element name="id" type="II" minOccurs="1" maxOccurs="unbounded"/>
          <xs:element name="effectiveTime" type="TS" minOccurs="0" maxOccurs="1"/>
          <xs:element name="priorityNumber" type="INT" minOccurs="0" maxOccurs="1"/>
-         <xs:element name="veryImportantPersonCode" type="CD" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="veryImportantPersonCode" type="CD" minOccurs="0" maxOccurs="unbounded"/>
          <xs:element name="patientPerson" type="PRPA_MT201304CN.PatientPerson" minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="providerOrganization" type="PRPA_MT201304CN.ProviderOrganization"
