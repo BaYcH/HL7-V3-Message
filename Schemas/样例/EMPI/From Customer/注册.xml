@@ -1,0 +1,192 @@
+<PRPA_IN201311CN01 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 ../../../multicacheschemas/PRPA_IN201311CN01.xsd"
+ xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+    <!-- 消息ID, 该ID在所有消息中是唯一的 -->
+    <id extension="3434" root="sfsdf"/>
+    <profileId root="1.2.156.112722.1.1.32" extension="BS0101"/>
+    <!-- 消息创建时间 -->
+    <creationTime value="20111129220000"/>
+    <!-- 交互ID(HL7交互类型代码系统) 用来区分消息类型，PRPA_IN201312CN01代表患者注册/更新请求接受-->
+    <interactionId extension="PRPA_IN201311CN01" root="2.16.840.1.113883.1.6"/>
+    <!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+    <processingCode code="P"/>
+    <!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+    <processingModeCode code="T"/>
+    <!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+    <acceptAckCode code="NE"/>
+    <receiver typeCode="RCV">
+        <!-- 接收设备/应用 -->
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <!-- 接收者ID(接收设备/应用ID) root="接收者ID" extension="接受机构"-->
+            <id extension="S004" root="1.2.156.112722.1.1.31"/>
+        </device>
+    </receiver>
+    <!-- 发送者 -->
+    <sender typeCode="SND">
+        <!-- 发送设备/应用 -->
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <!-- 发送者ID(发送设备/应用ID) -->
+            <!-- root="发送者ID" extension="发送机构" -->
+            <id extension="S001" root="1.2.156.112722.1.1.31"/>
+        </device>
+    </sender>
+    <controlActProcess classCode="CACT" moodCode="APT">
+        <!--包含患者的关键信息-->
+        <subject typeCode="SUBJ">
+            <registrationRequest classCode="REG" moodCode="RQO">
+                <!-- 用来定义建卡模式，自助，移动，线下 -->
+                <code code="01" codeSystem="dfdf" displayName="自助"/>
+                <subject1 typeCode="SBJ">
+                    <patient classCode="PAT">
+                        <!-- 此项必须包含患者的主索引号，返回给请求方 -->
+                        <!-- 各种标识符 患者在医院中的ID-->
+                        <id extension="001" identifierName="empi标识" root="1.2.156.112722.1.2.1.1"/>
+                        <id extension="0001" identifierName="患者ID" root="1.2.156.112722.1.2.1.3"/>
+                        <id extension="00001" identifierName="住院号" root="1.2.156.112722.1.2.1.6"/>
+                        <id extension="000001" identifierName="门诊号" root="1.2.156.112722.1.2.1.7"/>
+                        <id extension="0000001" identifierName="医保号" root="1.2.156.112722.1.2.1.5"/>
+                        <id extension="00000001" identifierName="影像号" root="1.2.156.112722.1.2.1.8"/>
+                        <!--vip患者的重要程度或者患者身份，比如：司局、本院职工、公费医疗，公务员，外地患者。。。-->
+                        <veryImportantPersonCode code="1" codeSystem="1.2.156.112722.1.2.1.9" displayName="干部"/>
+                        <!--患者基本信息（人相关）-->
+                        <patientPerson classCode="PSN" determinerCode="INSTANCE">
+                            <!-- 身份证号及各种证件号							@extension: 证件号码							@root: 证件OID，通过该OID可以明确指明证件类型-->
+                            <id extension="123456787654311112" root="1.2.156.112722.1.2.1.4"/>
+							<!--居民户口本-->
+                            <id root="1.2.156.112722.1.2.1.10"   extension="123" />
+							<!--护照-->
+							<id root="1.2.156.112722.1.2.1.11"   extension="123" />
+							<!--军官证-->
+							<id root="1.2.156.112722.1.2.1.12"   extension="123" />
+							<!--驾驶证-->
+							<id root="1.2.156.112722.1.2.1.13"   extension="123" />
+							<!--港澳来往内地通行证-->
+							<id root="1.2.156.112722.1.2.1.14"   extension="123" />
+							<!--台湾居民来往内地通行证-->
+							<id root="1.2.156.112722.1.2.1.15"   extension="123" />
+							<!--母亲身份证-->
+							<id root="1.2.156.112722.1.2.1.16"   extension="123" />
+							<!--其它法定有效证件-->
+							<id root="1.2.156.112722.1.2.1.17"   extension="123" />
+                            <!--姓名 必须项已使用-->
+                            <name>宁围</name>
+                            <addr use="H">
+                                <streetAddressLine>北京市海淀区西二旗</streetAddressLine>
+                                <city>北京</city>
+                                <state>北京</state>
+                                <postalCode>1000</postalCode>
+                            </addr>
+                            <!-- 家庭电话，电子邮件等联系方式							@use: 联系方式类型。PUB为联系电话，H为家庭电话							value: 前缀为区分电话还是电子邮件地址。电话无前缀，电子邮件前缀为mailto							电话默认值为空，电子邮件默认值为mailto:default-->
+                            <!-- 患者电话或电子邮件 -->
+                            <telecom use="H" value="13709876538"/>
+                            <telecom use="PUB" value="sina@163.com"/>
+                            <!-- 性别代码 -->
+                            <administrativeGenderCode code="1" codeSystem="1.2.156.112722.1.1.9" displayName="男"/>
+                            <!-- 出生日期 -->
+                            <birthTime value="18760706"/>
+                            <!-- 婚姻状况类别代码 -->
+                            <maritalStatusCode code="1" codeSystem="1.2.156.112722.1.1.4" displayName="未婚"/>
+                            <!-- 文化程度代码 -->
+                            <educationLevelCode code="10" codeSystem="1.2.156.112722.1.1.8" displayName="研究生"/>
+                            <!-- 残疾代码 -->
+                            <disabilityCode code="1" codeSystem="1.2.156.112722.1.1.12" displayName="无残疾"/>
+                            <!--民族代码 -->
+                            <ethnicGroupCode code="01" codeSystem="1.2.156.112722.1.1.7" displayName="汉族"/>
+                            <!--雇佣关系 -->
+                            <asEmployee classCode="EMP">
+                                <!--职业编码系统名称/职业代码 -->
+                                <code code="23" codeSystem="1.2.156.112722.1.1.10" displayName="老师"/>
+                                <!-- 工作单位地址 -->
+                                <addr use="WP">
+                                    <streetAddressLine>北京市西城区新街口</streetAddressLine>
+                                    <city>北京</city>
+                                    <state>北京</state>
+                                    <postalCode>10000</postalCode>
+                                </addr>
+                                <!-- 工作单位联系方式 -->
+                                <telecom use="WP" value="2343434343"/>
+                                <!-- 在职情况 -->
+                                <statusCode code="01" codeSystem="dfdf" displayName="在职"/>
+                                <!--工作单位 -->
+                                <employer classCode="ORG" determinerCode="INSTANCE">
+                                    <!--工作单位名称 -->
+                                    <name>美美达集团</name>
+                                </employer>
+                            </asEmployee>
+                            <!--公民身份 -->
+                            <asCitizen classCode="CIT">
+                                <!--所属国家 必须项已使用-->
+                                <politicalNation classCode="NAT" determinerCode="INSTANCE">
+                                    <code code="156" codeSystem="1.2.156.112722.1.1.3" codeSystemName="国籍" displayName="中国"/>
+                                </politicalNation>
+                            </asCitizen>
+                            <!-- 联系人 -->
+                            <contactParty classCode="CON">
+                                <!-- 与患者关系 -->
+                                <code code="01" codeSystem="1.2.156.112722.1.1.30" displayName="配偶"/>
+                                <contactPerson classCode="PSN" determinerCode="INSTANCE">
+                                    <!-- 联系人姓名 -->
+                                    <name>赵路</name>
+                                    <!-- 联系人地址 -->
+                                    <addr use="WP">
+                                        <streetAddressLine>北京市海淀区西二旗</streetAddressLine>
+                                    </addr>
+                                    <!-- 联系人电话或电子邮件 -->
+                                    <telecom use="H" value="243434343434"/>
+                                </contactPerson>
+                            </contactParty>
+                            <!-- 出生地 -->
+                            <birthPlace classCode="BIRTHPL">
+                                <addr use="H">
+                                    <streetAddressLine>山东省聊城市阳谷</streetAddressLine>
+                                    <state>山东</state>
+                                    <city>聊城</city>
+                                    <postalCode>250000</postalCode>
+                                </addr>
+                            </birthPlace>
+                            <!--籍贯-->
+                            <asNativePlace classCode="PLC">
+                                <nativePlace classCode="PLC" determinerCode="INSTANCE">
+                                    <code code="籍贯编码" codeSystem="jiguanOid" displayName="浙江"/>
+                                    <name/>
+                                </nativePlace>
+                            </asNativePlace>
+                        </patientPerson>
+                        <!-- 医疗机构信息  -->
+                        <providerOrganization classCode="ORG" determinerCode="INSTANCE">
+                            <!--医疗机构编码-->
+                            <id extension="400010558 " root="dfd"/>
+                            <!--医疗机构名称 -->
+                            <name>北京大学第一医院</name>
+                        </providerOrganization>
+                        <!--医保，商保，自费，公费医疗，大病统筹等信息-->
+                        <coveredPartyOf typeCode="COV">
+                            <coverageRecord classCode="COV" moodCode="EVN">
+                                <beneficiary typeCode="BEN">
+                                    <beneficiaryRole classCode="MBR">
+                                        <!-- 医保卡号，商保卡号等， -->
+                                        <id root="ddff" extension="2323"/>
+                                        <!-- 所属医保局，商保公司等 -->
+                                        <ensuranceEntity classCode="ORG" determinerCode="INSTANCE">
+                                            <name>xxxx医保局</name>
+                                        </ensuranceEntity>
+                                    </beneficiaryRole>
+                                </beneficiary>
+                            </coverageRecord>
+                        </coveredPartyOf>
+                    </patient>
+				</subject1>
+				<!--作者，操作者-->
+				<author typeCode="AUT">
+					<assignedEntity classCode="ASSIGNED">
+						<!--工号-->
+						<id extension="工号" root="caozuozheOid"/>
+						<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+							<name>操作者姓名</name>
+						</assignedPerson>
+					</assignedEntity>
+				</author>
+            </registrationRequest>
+        </subject>
+    </controlActProcess>
+</PRPA_IN201311CN01>
