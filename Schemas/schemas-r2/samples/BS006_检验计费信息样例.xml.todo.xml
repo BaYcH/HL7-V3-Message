@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POOR_IN200901UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:v3 ../Schemas/POOR_IN200901UV21.xsd">
+	<!-- 消息ID -->
+	<id extension="BS006" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="2.16.840.1.113883.1.6" extension="POOR_IN200901UV21" />
+	<!-- 消息用途: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current 
+		processing) -->
+	<processingModeCode code="R" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="NE" />
+
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id>
+				<item root="1.2.156.112635.1.1.19" extension=""/>
+			</id>
+		</device>
+	</receiver>
+
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id>
+				<item root="1.2.156.112635.1.1.19" extension=""/>
+			</id>
+		</device>
+	</sender>
+
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 消息交互类型 @code: 新增 :new 删除：delete -->
+		<code code="update"></code>
+		<subject typeCode="SUBJ" xsi:nil="false">
+			<placerGroup classCode="GROUPER" moodCode="RQO">
+				<subject typeCode="SBJ">
+					<patient classCode="PAT">
+						<id>
+							<!--域ID -->
+							<item root="1.2.156.112635.1.2.1.2" extension="111" />
+							<!--患者ID -->
+							<item root="1.2.156.112635.1.2.1.3" extension="001407878200" />
+							<!--就诊号 -->
+							<item root="1.2.156.112635.1.2.1.12" extension="4153754" />
+						</id>
+						<!-- 病区 床号 -->
+						<addr xsi:type="BAG_AD">
+							<item use="TMP">
+								<!-- 病区名 病区编码 -->
+								<part type="BNR" value="10C" code="1000068" codeSystem="1.2.156.112635.1.1.33" />
+								<!--床号 -->
+								<part type="CAR" value="002" />
+							</item>
+						</addr>
+					</patient>
+				</subject>
+				<author typeCode="AUT">
+					<!-- 计费开始时间 -->
+					<time value="20120413"></time>
+					<assignedEntity classCode="ASSIGNED">
+						<!-- 开单医生编码 -->
+						<id>
+							<item extension="03421" root="1.2.156.112635.1.1.2"></item>
+						</id>
+						<assignedPerson determinerCode="INSTANCE"
+							classCode="PSN">
+							<!--开单医生姓名 必须项已使用 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="李四"></part>
+								</item>
+							</name>
+						</assignedPerson>
+						<!-- 申请科室 信息 -->
+						<representedOrganization determinerCode="INSTANCE"
+							classCode="ORG">
+							<!-- 申请科室编码 必须已使用 -->
+							<id>
+								<item extension="140988948" root="1.2.156.112635.1.1.1"></item>
+							</id>
+							<!-- 申请科室名称 -->
+							<name xsi:type="BAG_EN">
+								<item use="ABC">
+									<part value="检验科微生物室" />
+								</item>
+							</name>
+						</representedOrganization>
+					</assignedEntity>
+				</author>
+				<!-- 录入人 -->
+				<transcriber typeCode="TRANS">
+					<time>
+						<!-- 录入日期 开始时间 -->
+						<low value="20120322140500"></low>
+						<!-- 录入日期 结束时间 -->
+						<high value="20120322140800"></high>
+					</time>
+					<assignedEntity classCode="ASSIGNED">
+						<!-- 录入人 -->
+						<id>
+							<item extension="07466" root="1.2.156.112635.1.1.2"></item>
+						</id>
+						<assignedPerson determinerCode="INSTANCE"
+							classCode="PSN">
+							<!-- 录入人姓名 必须项已使用 -->
+							<name xsi:type="BAG_EN">
+								<item use="ABC">
+									<part value="王五" />
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedEntity>
+				</transcriber>
+				<!--1.。n 一个检验消息中可以由多个申请单。component2对应一个申请单，有多个申请单时，重复component2 -->
+				<component2 typeCode="COMP"><!--申请单信息Begin -->
+					<observationRequest classCode="OBS" moodCode="RQO">
+						<!--检验申请单编号 必须项已使用 -->
+						<id>
+							<!--检验申请单编号 必须项已使用 HIS APPLY_ID -->
+							<item extension="12009320" root="1.2.156.112635.1.2.1.21" />		
+						</id>
+						<!-- 医嘱类型必须项目已使用 -->
+						<code code="03" codeSystem="1.2.156.112635.1.1.27">
+							<!-- 医嘱类型名称 -->
+							<displayName value="化验类" />
+						</code>
+						<!-- 检验申请单状态 必须项未使用 -->
+						<statusCode code="active"></statusCode>
+
+						<!--1..n 一个申请单可以包含多个医嘱，每个医嘱对应一个component2,多个医嘱重复component2 -->
+						<component2 typeCode="COMP"> 	<!--医嘱项目信息Begin -->
+							<observationRequest classCode="OBS" moodCode="RQO">
+								<!-- 医嘱号 必须项已使用 -->
+								<id>
+									<item extension="35566"></item>
+								</id>
+								<!-- 检验项目编码 必须项使用 -->
+								<code code="1300200001"  codeSystem="1.2.156.112635.1.1.46">
+									<displayName value="生化五項"/>
+								</code>
+								<!-- 必须项未使用 -->
+								<statusCode />
+								<effectiveTime xsi:type="IVL_TS">
+									<low value="20180101"/>
+								</effectiveTime>		
+								<informationRecipient typeCode="IRCP">
+									<assignedEntity classCode="ASSIGNED">
+										<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+											<name xsi:type="BAG_EN">
+												<item>
+													<part value="辅诊科室医师编码"/>
+												</item>
+											</name>
+										</assignedPerson>
+									</assignedEntity>
+								</informationRecipient>
+								<!-- 辅诊科室编码 -->
+								<location typeCode="LOC">
+									<serviceDeliveryLocation classCode="SDLOC">
+										<serviceProviderOrganization
+											determinerCode="INSTANCE" classCode="ORG">
+											<!-- 辅诊科室编码 -->
+											<id>
+												<item extension="1010700" root="1.2.156.112635.1.1.1"></item>
+											</id>
+											<!--辅诊科室编码 -->
+											<name xsi:type="BAG_EN" controlInformationExtension="1010700">
+												<item>
+													<part value="检验室" />
+												</item>
+											</name>
+										</serviceProviderOrganization>
+										
+									</serviceDeliveryLocation>
+								</location>
+								
+							</observationRequest>
+						</component2>		<!--医嘱项目信息End -->
+						<!-- 治疗方式 -->
+						<subjectOf6 contextConductionInd="false" xsi:nil="false"
+							typeCode="SUBJ">
+							<!-- 必须项 未使用 default=false -->
+							<seperatableInd value="false" />
+							<annotation classCode="ACT" moodCode="EVN">
+								<!-- 治疗方式 -->
+								<code code="03" codeSystem="1.2.156.112635.1.2.2.11">
+									<displayName value="化验"/>
+								</code>
+								<!-- 必须项 未使用 -->
+								<text></text>
+								<!--注意事项状态,模型中要求,值为'completed' -->
+								<statusCode code="completed" />
+								<!--必须项 未使用 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf6>
+						<!--备注字段1 药观编码－打印在报告单上，药理机构要求 -->
+						<subjectOf6 contextConductionInd="false" xsi:nil="false"
+							typeCode="SUBJ">
+							<!-- 必须项 未使用 default=false -->
+							<seperatableInd value="false" />
+							<annotation classCode="ACT" moodCode="EVN">
+								<!-- 备注类型 -->
+								<code code="01" codeSystem="1.2.156.112635.1.2.2.12"></code>
+								<!--药观编码 必须项已使用 -->
+								<text value="药观编码" />
+								<!--注意事项状态,模型中要求,值为'completed' -->
+								<statusCode code="completed" />
+								<!--必须项 未使用 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf6>
+						<!--备注字段2 药观名称－打印在报告单上，药理机构要求 -->
+						<subjectOf6 contextConductionInd="false" xsi:nil="false"
+							typeCode="SUBJ">
+							<!-- 必须项 未使用 default=false -->
+							<seperatableInd value="false" />
+							<annotation classCode="ACT" moodCode="EVN">
+								<!-- 备注类型 -->
+								<code code="02" codeSystem="1.2.156.112635.1.2.2.13"></code>
+								<!--药观名称 必须项已使用 -->
+								<text value="药观名称" />
+								<!--注意事项状态,模型中要求,值为'completed' -->
+								<statusCode code="completed" />
+								<!--必须项 未使用 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf6>
+						<!--备注字段3 其它HIS要求储存但未确定信息1 -->
+						<subjectOf6 contextConductionInd="false" xsi:nil="false"
+							typeCode="SUBJ">
+							<!-- 必须项 未使用 default=false -->
+							<seperatableInd value="false" />
+							<annotation classCode="ACT" moodCode="EVN">
+								<!-- 备注类型 -->
+								<code code="04" codeSystem="1.2.156.112635.1.2.2.14"></code>
+								<!--备注字段3 必须项已使用 -->
+								<text value="备注字段3" />
+								<!--注意事项状态,模型中要求,值为'completed' -->
+								<statusCode code="completed" />
+								<!--必须项 未使用 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf6>
+						<!--备注字段4 其它HIS要求储存但未确定信息2 -->
+						<subjectOf6 contextConductionInd="false" xsi:nil="false"
+							typeCode="SUBJ">
+							<!-- 必须项 未使用 default=false -->
+							<seperatableInd value="false" />
+							<annotation classCode="ACT" moodCode="EVN">
+								<!-- 备注类型 -->
+								<code code="05" codeSystem="1.2.156.112635.1.2.2.15"></code>
+								<!--备注字段4 必须项已使用 -->
+								<text value="备注字段4" />
+								<!--注意事项状态,模型中要求,值为'completed' -->
+								<statusCode code="completed" />
+								<!--必须项 未使用 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf6>
+						<!--备注字段5 其它HIS要求储存但未确定信息3 -->
+						<subjectOf6 contextConductionInd="false" xsi:nil="false"
+							typeCode="SUBJ">
+							<!-- 必须项 未使用 default=false -->
+							<seperatableInd value="false" />
+							<annotation classCode="ACT" moodCode="EVN">
+								<!-- 备注类型 -->
+								<code code="06" codeSystem="1.2.156.112635.1.2.2.16"></code>
+								<!--备注字段5 必须项已使用 -->
+								<text value="备注字段3" />
+								<!--注意事项状态,模型中要求,值为'completed' -->
+								<statusCode code="completed" />
+								<!--必须项 未使用 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf6>
+					</observationRequest>
+				</component2>	<!--申请单信息End -->
+				<!--就诊 -->
+				<componentOf1 contextConductionInd="false" xsi:nil="false"
+					typeCode="COMP">
+					<!--就诊 -->
+					<encounter classCode="ENC" moodCode="EVN">
+						<id>
+						    <!-- 就诊次数 -->
+							<item extension="2" root="1.2.156.112635.1.2.1.7"/>
+							<!-- 就诊流水号 -->
+							<item extension="123456" root="1.2.156.112635.1.2.1.6"/>
+						</id>
+						
+						<!--就诊类别编码-->
+						<code codeSystem="1.2.156.112635.1.1.80" code="01">
+							<!-- 就诊类别名称 -->
+							<displayName value="门诊/住院/体检" />
+						</code>
+						<!--必须项未使用 -->
+						<statusCode code="Active" />
+						<!--病人 必须项未使用 -->
+						<subject typeCode="SBJ">
+							<patient classCode="PAT" />
+						</subject>
+						<!--就诊机构/科室 -->
+						<location typeCode="LOC" xsi:nil="false">
+							<!--必须项未使用 -->
+							<time />
+							<!--就诊机构/科室 -->
+							<serviceDeliveryLocation classCode="SDLOC">
+								<serviceProviderOrganization
+									determinerCode="INSTANCE" classCode="ORG">
+									<!--就诊院区编码 -->
+									<id>
+										<item extension="01" identifierName="新院"></item>
+									</id>
+									<!-- 就诊院区名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="江苏省人民医院"></part>
+										</item>
+									</name>
+								</serviceProviderOrganization>
+							</serviceDeliveryLocation>
+						</location>
+					</encounter>
+				</componentOf1>
+			</placerGroup>
+		</subject>
+	</controlActProcess>
+</POOR_IN200901UV>
