@@ -84,15 +84,20 @@
 					<!-- 项目序号(可选项) -->
 					<sequenceNumber value="1" />
 					<!-- substanceAdministrationRequest表示用药医嘱， observationRequest表示检查检验医嘱, procedureRequest表示手术类医嘱 -->
-					<substanceAdministrationRequest
-						classCode="SBADM" moodCode="RQO">
+					<observationRequest classCode="OBS">
 						<!-- 医嘱号 -->
-						<id extension="02938234" identifierName="定位执行关联的医嘱" />
-						<!-- 医嘱的类型编码 -->
+						<id>
+							<!-- 医嘱号 -->
+							<item extension="0004566" root="1.2.156.112635.1.2.1.22"/>
+							<!-- 申请单号 -->
+							<item extension="10001342" root="1.2.156.112635.1.2.1.21"/>
+						</id><!-- 医嘱的类型编码 -->
 						<code code="2" codeSystem="1.2.156.112635.1.1.27">
-							<displayName value="检查类" />
+							<displayName value="检验类" />
 						</code>
-						<!-- 标本信息 -->
+						<!-- statusCode与上面的controlActProcess/code可以二选一 -->
+						<statusCode code="stop"/>
+						<!-- 标本信息，可选 -->
 						<specimen typeCode="SPC">
 							<specimen classCode="SPEC">
 								<!--标本条码号 必须项已使用 -->
@@ -102,6 +107,7 @@
 							</specimen>
 						</specimen>
 						
+						<!-- 停止/撤销执行人 -->
 						<performer typeCode="PRF">
 							<!-- 撤销或停止时间 -->
 							<time>
@@ -202,7 +208,7 @@
 								<value xsi:type="ST" value="20150617151212" />
 							</observation>
 						</pertinentInformation>
-					</substanceAdministrationRequest>
+					</observationRequest>
 				</component2>
 				<!-- 其他医嘱项按上面格式添加 -->
 				<!-- 就诊次数 -->

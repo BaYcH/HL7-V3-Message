@@ -144,8 +144,8 @@
 						<code code="c" codeSystem="1.2.156.112635.1.1.27">
 							<displayName value="片剂药品" />
 						</code>
-						<!-- 必须项未使用 -->
-						<statusCode/>
+						<!-- 与下面的医嘱执行状态二选一 -->
+						<statusCode code="IN Progress"/>
 						
 						<!-- 必须项未使用 -->
 						<effectiveTime xsi:type="IVL_TS" />
