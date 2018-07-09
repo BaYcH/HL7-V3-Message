@@ -4,7 +4,7 @@
 	<id root="2.16.840.1.113883.1.6.5" extension="345345"/>
 	<!-- 消息创建时间 -->
 	<creationTime value="20111129220000"/>
-	<!-- 交互ID(HL7交互类型代码系统) 用来区分消息类型，PRPA_IN400001CN01代表患者挂号或入院信息-->
+	<!-- 交互ID(HL7交互类型代码系统) 用来区分消息类型，PRPA_IN400001CN01代表患者挂号或入院信息，以encounterEvent/code来区分就诊类型，以controlActProcess来区分是新、更新、取消、完成-->
 	<interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN400001CN01"/>
 	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
 	<processingCode code="P"/>
@@ -30,17 +30,20 @@
 		</device>
 	</sender>
 	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 触发事件,该元素用来明确一个就诊消息是新就诊、更新就诊、取消还是完成 -->
+		<!-- 新就诊：PRPA_TE4000001CN， 更新就诊：PRPA_TE4000002CN ， 取消就诊：PRPA_TE4000004CN， 完成就诊：PRPA_TE4000003CN -->
+		<code code="PRPA_TE400001CN" codeSystem="2.1.3456.8989" displayName="新就诊信息"/>
 		<subject typeCode="SUBJ">
 			<encounterEvent classCode="ENC" moodCode="EVN">
 				<!-- 表示一次就诊的唯一标识，用来标识一次门诊、急诊、住院等，EncounterNumber -->
 				<id root="2.16.840.1.113883.1.6.6" extension="就诊ID" />
 				
-				<!-- 就诊类型，比如门诊、急诊、住院、体检等 -->
+				<!-- 就诊类型，以此来区分是门诊、急诊、住院、体检等 -->
 				<code code="就诊类型编码" codeSystem="2.16.840.1.113883.1.6.5.8" displayName="住院"/>
 				
-				<!-- 就诊状态，一个新的就诊的状态为active，当就诊结束后，状态为completed -->
+				<!-- 就诊状态，一个新的就诊的状态为active，跟新就诊信息状态为revised,当就诊结束后，状态为completed, 取消的状态则为cancelled -->
 				<statusCode code="active"/>
-				<!-- 就诊时间，如果是门急诊，则只需要填写low即可，如果是住院，low代表入院日期，high代表出院日期 -->
+				<!-- 住院就诊时间，low代表入院日期，high代表出院日期 -->
 				<effectiveTime>
 					<low value="20180101"/>
 					<high value="20180105"/>
@@ -80,6 +83,8 @@
 							<!-- 性别 -->
 							<administrativeGenderCode code="0" codeSystem="codeSystem79" displayName="男"/>
 
+							<birthTime value="19870202"/>
+
 							<!-- 出生地 -->
 							<birthplace classCode="BIRTHPL">
 								<birthplace classCode="PLC" determinerCode="INSTANCE">
@@ -92,13 +97,37 @@
 								</birthplace>
 							</birthplace>
 						</patientPerson>
+						<!-- 医院，医疗机构信息 -->
 						<providerOrganization classCode="ORG" determinerCode="INSTANCE">
+							<id root="orgidroot" extension="医疗机构编号"/>
 							<name>北京大学第一医院
 							</name>
 						</providerOrganization>
-						
+						<!-- 患者身份信息，自费，公费，医保，新农合等 -->
+						<coveredPartyOf typeCode="COV">
+							<coverageRecord classCode="COV" moodCode="EVN">
+								<beneficiary typeCode="BEN">
+									<beneficiaryRole classCode="MBR">
+										<id root="1.2.156.112635.1.1.6.7" extension="新农合编号"/>
+										<code code="xxxx" codeSystem="1.2.156.112635.1.1.6.8" displayName="新农合"/>
+										<groupEnsuranceEntity classCode="ORG" determinerCode="INSTANCE">
+											<name>xxxx医保局</name>
+										</groupEnsuranceEntity>
+									</beneficiaryRole>
+								</beneficiary>
+							</coverageRecord>
+						</coveredPartyOf>
 					</patient>
 				</subject>
+				<responsibleParty typeCode="RESP">
+					<time value="20180503"/>
+					<assignedOrganization classCode="ASSIGNED">
+						<assignedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+							<id root="uieurieurie" extension="ererer"/>
+							<name>心内科</name>
+						</assignedResponsibleOrganization>
+					</assignedOrganization>
+				</responsibleParty>
 				<!-- 挂号或入院操作员 -->
 				<admitter typeCode="ADM">
 					<!-- 登记时间 -->
@@ -151,6 +180,30 @@
 						</assignedConsultantPerson>
 					</assignedConsultant>
 				</consultant>
+				<location typeCode="LOC">
+					<time>
+						<low value="20180523"/>
+						<high value="20180526"/>
+					</time>
+					<serviceDeliveryLocation classCode="SDLOC">
+						<location classCode="PLC" determinerCode="INSTANCE">
+							<id root="bedroot" extension="bedid"/>
+							<name>床位号</name>
+							<asLocatedEntityPartOf classCode="LOCE">
+								<location classCode="PLC" determinerCode="INSTANCE">
+									<id root="roomroot" extension="room_id"/>
+									<name>病房</name>
+									<asLocatedEntityPartOf classCode="LOCE">
+										<location classCode="PLC" determinerCode="INSTANCE">
+											<id root="arearoot" extension="areaid"/>
+											<name>病区</name>
+										</location>
+									</asLocatedEntityPartOf>
+								</location>
+							</asLocatedEntityPartOf>
+						</location>
+					</serviceDeliveryLocation>
+				</location>
 				<!-- 科室主任 -->
 				<participation typeCode="PART">
 					<assignedDirector classCode="ASSIGNED">
