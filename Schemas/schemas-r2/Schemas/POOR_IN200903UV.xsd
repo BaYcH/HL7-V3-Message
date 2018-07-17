@@ -26,13 +26,13 @@ This document was rendered into XML using software provided to HL7 by Beeler Con
    <xs:element name="POOR_IN200903UV">
       <xs:complexType>
          <xs:complexContent>
-            <xs:extension base="POOR_IN200901UV.MCCI_MT000100UV01.Message">
+            <xs:extension base="POOR_IN200903UV.MCCI_MT000100UV01.Message">
                <xs:attribute name="ITSVersion" type="xs:string" use="required" fixed="XML_1.0"/>
             </xs:extension>
          </xs:complexContent>
       </xs:complexType>
    </xs:element>
-   <xs:complexType name="POOR_IN200901UV.MCCI_MT000100UV01.Message">
+   <xs:complexType name="POOR_IN200903UV.MCCI_MT000100UV01.Message">
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:element name="id" type="II" minOccurs="1" maxOccurs="1"/>
@@ -56,13 +56,13 @@ This document was rendered into XML using software provided to HL7 by Beeler Con
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="controlActProcess"
-                     type="POOR_IN200901UV.MCAI_MT700201UV01.ControlActProcess"
+                     type="POOR_IN200903UV.MCAI_MT700201UV01.ControlActProcess"
                      minOccurs="1"
                      maxOccurs="1"/>
       </xs:sequence>
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
    </xs:complexType>
-   <xs:complexType name="POOR_IN200901UV.MCAI_MT700201UV01.ControlActProcess">
+   <xs:complexType name="POOR_IN200903UV.MCAI_MT700201UV01.ControlActProcess">
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:element name="id" type="DSET_II" minOccurs="0" maxOccurs="1"/>
@@ -85,7 +85,7 @@ This document was rendered into XML using software provided to HL7 by Beeler Con
                      nillable="true"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="subject" type="POOR_IN200901UV.MCAI_MT700201UV01.Subject2"
+         <xs:element name="subject" type="POOR_IN200903UV.MCAI_MT700201UV01.Subject2"
                      nillable="true"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
@@ -96,7 +96,7 @@ This document was rendered into XML using software provided to HL7 by Beeler Con
       <xs:attribute name="classCode" type="ActClassControlAct" use="required"/>
       <xs:attribute name="moodCode" type="x_ActMoodIntentEvent" use="required"/>
    </xs:complexType>
-   <xs:complexType name="POOR_IN200901UV.MCAI_MT700201UV01.Subject2">
+   <xs:complexType name="POOR_IN200903UV.MCAI_MT700201UV01.Subject2">
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
          <xs:choice>

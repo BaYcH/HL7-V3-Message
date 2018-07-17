@@ -8,6 +8,7 @@
 	<creationTime value="20120106110000" />
 	<!-- 交互ID -->
 	<interactionId root="2.16.840.1.113883.1.6" extension="POOR_IN200901UV21" />
+	
 	<!-- 消息用途: P(Production); D(Debugging); T(Training) -->
 	<processingCode code="P" />
 	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current 
@@ -48,8 +49,10 @@
 							<item root="1.2.156.112635.1.2.1.2" extension="111" />
 							<!--患者ID -->
 							<item root="1.2.156.112635.1.2.1.3" extension="001407878200" />
-							<!--就诊号 -->
+							<!--门诊号 -->
 							<item root="1.2.156.112635.1.2.1.12" extension="4153754" />
+							<!--住院号 -->
+							<item root="1.2.156.112635.1.2.1.13" extension="4153723" />
 						</id>
 						<!-- 病区 床号 -->
 						<addr xsi:type="BAG_AD">
@@ -86,6 +89,7 @@
 								<!--年龄 -->
 								<originalText value="12" />
 							</birthTime>
+							
 							<!--地址 -->
 							<addr xsi:type="BAG_AD">
 								<!-- 家庭住址 -->
@@ -96,6 +100,12 @@
 									<part type="ZIP" value="530022" />
 								</item>
 							</addr>
+							<!-- 民族 -->
+							<ethnicGroupCode>
+								<item code="01" codeSystem="1.123.456">
+									<displayName value="汉族"></displayName>
+								</item>
+							</ethnicGroupCode>
 							<asEmployee classCode="EMP">
 								<employerOrganization determinerCode="INSTANCE"
 									classCode="ORG">
@@ -113,6 +123,20 @@
 									<contactParty classCode="CON"></contactParty>
 								</employerOrganization>
 							</asEmployee>
+							<contactParty classCode="CON">
+								<!-- 联系人电话 -->
+								<telecom xsi:type="BAG_TEL">
+									<item value="84544344"/>
+								</telecom>
+								<contactPerson classCode="PSN" determinerCode="INSTANCE">
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="name"/>
+										</item>
+									</name>
+								</contactPerson>
+								
+							</contactParty>
 						</patientPerson>
 						<providerOrganization classCode="ORG"
 							determinerCode="INSTANCE">
@@ -357,6 +381,26 @@
 								<component2>
 									<!-- 是否标记 -->
 									<placerGroup>
+										<!-- 传染标志 -->
+										<pertinentInformation typeCode="PERT"
+											contextConductionInd="false">
+											<observation classCode="OBS" moodCode="INT">
+												<code code="01" codeSystem="1.2.156.112635.1.1.84">
+													<displayName value="传染" />
+												</code>
+												<value xsi:type="BL" value="true" />
+											</observation>
+										</pertinentInformation>
+										<!-- 课题标志 -->
+										<pertinentInformation typeCode="PERT"
+											contextConductionInd="false">
+											<observation classCode="OBS" moodCode="INT">
+												<code code="02" codeSystem="1.2.156.112635.1.1.878">
+													<displayName value="课题" />
+												</code>
+												<value xsi:type="BL" value="true" />
+											</observation>
+										</pertinentInformation>
 										<!-- 是否皮试 -->
 										<pertinentInformation typeCode="PERT"
 											contextConductionInd="false">
@@ -407,6 +451,17 @@
 													<displayName value="收费状态标识" />
 												</code>
 												<value xsi:type="ST" value="0" />
+												<author typeCode="AUT">
+													<assignedEntity classCode="ASSIGNED">
+														<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+															<name xsi:type="BAG_EN">
+																<item>
+																	<part value="收费人员"/>
+																</item>
+															</name>
+														</assignedPerson>
+													</assignedEntity>
+												</author>
 											</observation>
 										</pertinentInformation>
                                         <!-- HIS执行状态  -->
@@ -458,9 +513,16 @@
 											</observation>
 										</pertinentInformation>							
 									</placerGroup>
-								</component2>																
-								<subjectOf1 typeCode="SUBJ">
+								</component2>															
+								<subjectOf1 typeCode="SUBJ">				
 									<valuedItem moodCode="DEF" classCode="INVE">
+										<!-- 收费项目名称 -->
+										<code code="34343" codeSystem="1.34.3434">
+											<displayName value="收费项目名称"></displayName>
+										</code>
+										<effectiveTime>
+											<originalText value="20180101"/>
+										</effectiveTime>
 										<!--测试项目价格 -->
 										<unitPriceAmt>
 											<numerator xsi:type="MO" value="200" currency="RMB" />
@@ -634,7 +696,7 @@
 						<location typeCode="LOC" xsi:nil="false">
 							<!--必须项未使用 -->
 							<time />
-							<!--就诊机构/科室 -->
+							<!--就诊机构 -->
 							<serviceDeliveryLocation classCode="SDLOC">
 								<serviceProviderOrganization
 									determinerCode="INSTANCE" classCode="ORG">
@@ -645,9 +707,21 @@
 									<!--就诊院区名称 -->
 									<name xsi:type="BAG_EN">
 										<item>
-											<part value="江苏省人民医院"></part>
+											<part value="院区1"></part>
 										</item>
 									</name>
+									<asOrganizationPartOf classCode="PART">
+										<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+											<id>
+												<item extension="1" identifierName="医院"/>
+											</id>
+											<name xsi:type="BAG_EN">
+												<item>
+													<part value="江苏省人民医院"></part>
+												</item>
+											</name>
+										</wholeOrganization>
+									</asOrganizationPartOf>
 								</serviceProviderOrganization>
 							</serviceDeliveryLocation>
 						</location>
@@ -669,6 +743,56 @@
 								</value>
 							</observationDx>
 						</pertinentInformation1>
+						<!-- Abo血型 -->
+						<pertinentInformation1 typeCode="PERT"
+							xsi:nil="false">
+							<observationDx classCode="OBS" moodCode="EVN">
+								<!-- Abo血型 -->
+								<code code="0101" codeSystem="1.2.156.112635.1.1.29" >
+									<displayName value="Abo血型" />		
+								</code>						
+								<!-- 必须项未使用 -->
+								<statusCode code="active" />
+								<!-- 血型代码 必须项已使用 -->
+								<value code="A23.901" codeSystem="1.2.156.112635.1.1.30">
+									<!-- 血型 -->
+									<displayName value="O" />
+								</value>
+							</observationDx>
+						</pertinentInformation1>
+						<!-- Rh血型 -->
+						<pertinentInformation1 typeCode="PERT"
+							xsi:nil="false">
+							<observationDx classCode="OBS" moodCode="EVN">
+								<!-- Rh血型 -->
+								<code code="0101" codeSystem="1.2.156.112635.1.1.29" >
+									<displayName value="Rh血型" />		
+								</code>						
+								<!-- 必须项未使用 -->
+								<statusCode code="active" />
+								<!-- Rh血型代码 必须项已使用 -->
+								<value code="A23.901" codeSystem="1.2.156.112635.1.1.30">
+									<!-- 血型名称 -->
+									<displayName value="R" />
+								</value>
+							</observationDx>
+						</pertinentInformation1>
+						<!-- 简要病史 -->
+						<pertinentInformation2 typeCode="PERT"
+							xsi:nil="false">
+							<observationEvent classCode="OBS" moodCode="EVN">
+								<typeId extension="7776" identifierName="简要病史"/>
+								<text value="简要病史"></text>
+							</observationEvent>
+						</pertinentInformation2>
+						<!-- 已检验信息 -->
+						<pertinentInformation2 typeCode="PERT"
+							xsi:nil="false">
+							<observationEvent classCode="OBS" moodCode="EVN">
+								<typeId extension="77" identifierName="已检验信息"/>
+								<text value="已检验信息"></text>
+							</observationEvent>
+						</pertinentInformation2>
 					</encounter>
 				</componentOf1>
 			</placerGroup>

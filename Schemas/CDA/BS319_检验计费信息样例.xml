@@ -25,7 +25,7 @@
 	<code code="04" codeSystem="1.2.156.112635.1.1.60" displayName="检查检验记录"/>
 	
 	<!-- 文档标题文本 -->
-	<title>检验报告</title>
+	<title>检验计费</title>
 	
     <!-- 文档生效日期 -->
 	<effectiveTime value="20111231" />
@@ -64,7 +64,6 @@
 			    <administrativeGenderCode code="M" codeSystem="1.2.156.112635.1.1.3" displayName="男" />
 			    <!-- 出生日期 -->
 			    <birthTime value="20000101"/>
-			    
 			</patient>
 		</patientRole>
 	</recordTarget>
@@ -213,20 +212,6 @@
 									<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
 										<id extension="001" root="jkjkj"/>
 										<name>呼吸内科</name>
-										<asOrganizationPartOf classCode="PART">
-											<!-- 病人所在的院区 -->
-											<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
-												<id extension="0001" root="jdff"/>
-												<name>第三院区</name>
-												<asOrganizationPartOf classCode="PART">
-													<!-- 病人所在的医院 -->
-													<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="00001" root="jdff"/>
-														<name>江苏省人民医院</name>
-													</wholeOrganization>
-												</asOrganizationPartOf>
-											</wholeOrganization>
-										</asOrganizationPartOf>
 									</wholeOrganization>
 								</asOrganizationPartOf>
 							</wholeOrganization>
