@@ -15,8 +15,12 @@
 	<!-- 固定值 -->
 	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
 
+	<!--服务ID-->
+	<templateId extension="BS320"/>
+
 	<!-- 文档标识-报告号 root填写发送系统id，extension填报告唯一id-->
 	<id root="S038" extension="c266"/>
+
 
 	<!-- 文档标识-名称 / 文档标识-类别编码 -->
 	<!-- 固定值 -->
@@ -35,8 +39,7 @@
     <!-- 固定值 -->
 	<languageCode code="zh-CN" />
 	
-	<!--服务ID-->
-	<setId extension="BS320"/>
+	
 	
     <!-- 文档的操作版本:
     0 表示新增,
@@ -176,17 +179,17 @@
 			    <!-- 申请科室编码 -->
 			    <id root="1.2.156.112635.1.1.1" extension="98712"/>
 	            <!-- 申请科室名称 -->
-			        <name>放射科</name>
+			        <name>普通内科</name>
 			</scopingOrganization>
 			
 		</associatedEntity>
 	</participant>
 	
 	 	 
-	<!-- 关联医嘱信息 -->
+	<!-- 关联医嘱/申请单信息 -->
 	<inFulfillmentOf>
 		<order>
-			<!-- 关联医嘱号(可多个) -->
+			<!-- 关联医嘱/申请单号(可多个) -->
 			<id extension="123"/>
 			<id extension="234"/>
 			<id extension="345"/>
@@ -256,14 +259,6 @@ CDA Body
                             <value xsi:type="ST">11岁</value>
                         </observation>
                     </entry>
-                    <!-- 病区 -->
-                    <entry>
-                        <observation classCode="OBS" moodCode="EVN">
-                            <code code="225746001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="ward" />
-                            <!-- 病区编码 病区名称 -->
-                            <value xsi:type="SC" code="005" codeSystem="1.2.156.112635.1.1.33">I病区</value>
-                        </observation>
-                    </entry>
                 </section>
             </component>
 
@@ -277,7 +272,6 @@ CDA Body
 				<section>
 					<code code="30954-2" displayName="STUDIES SUMMARY" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 					<title>检查</title>
-					
 					<!-- 相关信息 -->
 				    <entry>
 				        <organizer classCode="BATTERY" moodCode="EVN">
@@ -348,7 +342,7 @@ CDA Body
 					                
 					                
 					                
-					                <!-- 检查报告结果-客观所见/影像学表现(能够与项目对应时的填写处 - @code:01表示客观所见, 02表示主观提示) -->
+					                <!-- 检查报告结果-客观/影像学表现(能够与项目对应时的填写处 - @code:01表示客观所见, 02表示主观提示) -->
 					                <value xsi:type="CD" code="01" codeSystem="1.2.156.112635.1.1.98">
 										<originalText>
 											超声肾上腺部位多断面超声扫查，未见明显异常回声
@@ -378,30 +372,18 @@ CDA Body
 				                                <name>陈小星</name>
 			                                </assignedPerson>
 			                                <representedOrganization classCode="ORG" determinerCode="INSTANCE">
-			                                   <!-- 检查科室编码 -->
+			                                   <!-- 检查房间编码 -->
 			                                   <id root="1.2.156.112635.1.1.1" extension="98712"/>
-										       <!-- 检查科室名称 -->
-										       <name>放射科</name>
-									        </representedOrganization>
-										</assignedEntity>
-									</performer>
-									
-					                <!-- 检查医师信息 -->
-					                <performer>
-					                    <!-- 检查日期 -->
-	                                    <time value="201112310910"/>
-										<assignedEntity>
-											<!-- 检查医生编码 -->
-			                                <id  root="1.2.156.112635.1.1.2" extension="9880"/>
-		                                    <assignedPerson determinerCode="INSTANCE" classCode="PSN">
-		                                        <!-- 检查医生名称 -->
-				                                <name>陈大星</name>
-			                                </assignedPerson>
-			                                <representedOrganization classCode="ORG" determinerCode="INSTANCE">
-			                                   <!-- 检查科室编码 -->
-			                                   <id root="1.2.156.112635.1.1.1" extension="98712"/>
-										       <!-- 检查科室名称 -->
-										       <name>放射科</name>
+										       <!-- 检查房间名称 -->
+										       <name>US1室</name>
+										       <asOrganizationPartOf>
+												   <wholeOrganization>
+													   <!--检查科室编码-->
+													   <id root="1.2.156.4" extension="jdff"></id>
+													   <!--检查科室名称-->
+													   <name>超声科</name>
+												   </wholeOrganization>
+										       </asOrganizationPartOf>
 									        </representedOrganization>
 										</assignedEntity>
 									</performer>
@@ -788,9 +770,24 @@ CDA Body
 							
 						</organizer>
 				    </entry>
+				    <!-- 阳性标志 -->
+				    <entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="02" codeSystem="1.2.234" displayName="阳性标志"/>
+							<value xsi:type="CD" code="01" codeSystem="1.2.345" displayName="阳性"/>
+						</observation>
+					</entry>
 				</section>
 			</component>			
-<!-- 
+
+			<component>
+				<section>
+					<code code="eere" codeSystem="1.2.34" displayName="djfjf"/>
+					<title>报告结论</title>
+					<text></text>
+				</section>
+			</component>
+<!--
 ********************************************************
 诊断
 ********************************************************
@@ -810,7 +807,19 @@ CDA Body
 									<statusCode code="completed"/>
 									 
                                     <!-- 疾病编码/疾病名称(没有编码去掉@code) -->
-									<value xsi:type="CD" code="233604007" codeSystem="1.2.156.112635.1.1.30" displayName="肺炎" />        
+									<value xsi:type="CD" code="233604007" codeSystem="1.2.156.112635.1.1.30" displayName="肺炎" />
+									<author>
+										<!-- 诊断时间 -->
+										<time value="20180719"></time>
+										<assignedAuthor>
+											<!--诊断医生工号-->
+											<id root="1.2.34" extension="3445"/>
+											<assignedPerson>
+												<!--诊断医生姓名-->
+												<name>zhangsan</name>
+											</assignedPerson>
+										</assignedAuthor>
+									</author>        
 								</observation>
 							</entryRelationship>
 						</act>
