@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MCCI_IN000002UV01 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="multicacheschemas/MCCI_IN000002UV01.xsd"
- xmlns="urn:hl7-org:v3"  ITSVersion="XML_1.0">
+<MCCI_IN000002UV02 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 ../multicacheschemas/MCCI_IN000002UV02.xsd"
+ xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
     <id root="f531489e-67f2-11dc-984e-3603d6866807"/>
     <creationTime  value="20070803130625"/>
     <interactionId root="2.16.840.1.113883.1.6" extension="MCCI_IN000002UV02"/>
@@ -19,12 +19,11 @@
             <telecom value="https://example.org/PatientFeed"/>
         </device>
     </sender>
-    <acknowledgement>
+    <acknowledgement typeCode="AA">
 		<!--当code=CA的时候，表示接受-->
-        <typeCode code="CA"/>
 		<!--指明是针对那条消息的返回-->
         <targetMessage>
             <id root="22a0f9e0-4454-11dc-a6be-3603d6866807"/>
         </targetMessage>
     </acknowledgement>
-</MCCI_IN000002UV01>
+</MCCI_IN000002UV02>

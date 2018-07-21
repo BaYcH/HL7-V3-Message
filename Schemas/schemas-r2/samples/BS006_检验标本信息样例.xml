@@ -7,7 +7,7 @@
 	<!-- 消息创建时间 -->
 	<creationTime value="20120106110000" />
 	<!-- 交互ID -->
-	<interactionId root="2.16.840.1.113883.1.6" extension="POOR_IN200901UV21" />
+	<interactionId root="2.16.840.1.113883.1.6" extension="POOR_IN200902UV" />
 	<!-- 消息用途: P(Production); D(Debugging); T(Training) -->
 	<processingCode code="P" />
 	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current 

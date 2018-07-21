@@ -66,6 +66,20 @@
 							<!-- 预约排序号-->
 							<item root="1.2.156.112635.1.2.1.25" extension="12"/>
 						</id>
+						<patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<name xsi:type="DSET_EN">
+								<item>
+								</item>
+							</name>
+							<administrativeGenderCode code="" codeSystem=""/>
+							<birthTime value="20180101"></birthTime>
+							<asCitizen classCode="CIT">
+								<politicalNation>
+									<code></code>
+								</politicalNation>
+							</asCitizen>
+						</patientPerson>
+						
 						<providerOrganization classCode="ORG" determinerCode="INSTANCE">
 							<!--病人科室编码-->
 							<id>
