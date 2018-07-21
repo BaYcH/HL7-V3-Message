@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../coreschemas/CDA.xsd">
+<!--===================================-->
+<!-- 检查报告                           -->
+<!--===================================-->
+<!--
+********************************************************
+  CDA Header
+********************************************************
+-->
+    <!-- 文档适用范围编码 -->
+	<realmCode code="CN"/>
+
+	<!-- 文档信息模型类别-标识符 -->
+	<!-- 固定值 -->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+
+	<!--服务ID-->
+	<templateId extension="BS320"/>
+
+	<!-- 文档标识-报告号 root填写发送系统id，extension填报告唯一id-->
+	<id root="S038" extension="c266"/>
+
+
+	<!-- 
+								检查报告类型标识信息(下面是检查报告的展示, 实际标识值按报告内容填写)
+								1. @code="301" @displayName="X线检查报告单"
+								2. @code="302" @displayName="CT检查报告单"
+                                3. @code="303" @displayName="MRI检查报告单"
+                                4. @code="304" @displayName="核医学科PET/CT中心"
+							-->
+	<code code="04" codeSystem="1.2.156.112635.1.1.60" displayName="CT检查报告单"/>
+	
+	
+	
+	<!-- 文档标题文本 -->
+	<title>检查报告</title>
+
+	<!-- 文档生效日期 -->
+    <effectiveTime value="20111231" />
+
+	<!-- 文档密级编码 -->
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="normal" />
+
+	<!-- 文档语言编码 -->
+    <!-- 固定值 -->
+	<languageCode code="zh-CN" />
+	
+	
+	
+    <!-- 文档的操作版本:
+    0 表示新增,
+    1 表示修改 
+    2 表示替换（用于解决审核后的超声心动系统报告，修改后，会生成新的报告，新旧报告报告号不同问题） 
+     -->
+	<versionNumber value="0"/>
+
+	<!-- 文档记录对象 -->
+	<recordTarget typeCode="RCT">
+		<!-- 病人信息 -->
+		<patientRole classCode="PAT">
+		    <!-- 域ID -->
+			<id root="1.2.156.112635.1.2.1.2" extension="222" /> 
+			<!-- 患者ID -->
+			<id root="1.2.156.112635.1.2.1.3" extension="333" /> 
+			<!-- 就诊号 -->
+            <id root="1.2.156.112635.1.2.1.12" extension="121212" /> 
+            
+			<!-- 病区床号信息 -->
+			<addr use="TMP">
+                <!-- 床位号 -->
+			    <careOf>10</careOf>
+			</addr>
+			
+			<!-- 病人基本信息 -->
+			<patient classCode="PSN" determinerCode="INSTANCE">
+				<!-- 病人名称 -->
+				<name>刘小三</name>
+				<!-- 性别编码/性别名称 -->
+				<administrativeGenderCode code="M" codeSystem="1.2.156.112635.1.1.3" displayName="男" />			
+				<!-- 出生日期 -->
+				<birthTime value="20000101" />
+			</patient>
+		 
+		</patientRole>
+	</recordTarget>
+	
+	<!-- 文档作者(检查报告医生, 可循环) -->
+	<author typeCode="AUT">
+		<!-- 报告日期 -->
+	    <time value="201112311010"/>
+		<assignedAuthor classCode="ASSIGNED">
+		    <!-- 报告医生编码 -->
+			<id root="1.2.156.112635.1.1.2" extension="9876"/>
+			<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+			    <!-- 报告医生名称 -->
+				<name>陈小伟</name>
+			</assignedPerson>
+		</assignedAuthor>
+	</author>
+	<author typeCode="AUT">
+		<!-- 报告日期 -->
+	    <time value="201112311010"/>
+		<assignedAuthor classCode="ASSIGNED">
+		    <!-- 报告医生编码 -->
+			<id root="1.2.156.112635.1.1.2" extension="9877"/>
+			<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+			    <!-- 报告医生名称 -->
+				<name>陈小小</name>
+			</assignedPerson>
+		</assignedAuthor>
+	</author>
+	
+	<dataEnterer typeCode="ENT">
+		<time value="20180101"/>
+		<assignedEntity>
+		    <!-- 记录者编码 -->
+			<id root="1.2.156.112635.1.1.2" extension="9877"/>
+			<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+			    <!-- 记录者名称 -->
+				<name>陈小小</name>
+			</assignedPerson>
+		</assignedEntity>
+	</dataEnterer>
+	
+	<!-- 文档保管者(CDA中custodian为必填项) -->
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+			    <!-- 医疗机构编码 -->
+				<id root="1.2.156.112635" extension="46600083-8" />
+				<!-- 医疗机构名称 -->
+				<name>江苏省人民医院</name>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	
+	<!-- 电子签章信息 -->
+	<legalAuthenticator>
+	    <time />
+		<signatureCode code="S" />
+		<assignedEntity>
+		    <!-- 电子签章号-->
+			<id extension="电子签章号" />
+		</assignedEntity>
+	</legalAuthenticator>
+
+    <!-- 文档审核者(检查报告审核医师, 可循环) -->
+	<authenticator>
+	    <!-- 审核日期 -->
+	    <time value="201112311010" />
+	    <signatureCode code="S"/>
+		<assignedEntity classCode="ASSIGNED">
+	        <!-- 审核医生编码 -->
+			<id root="1.2.156.112635.1.1.2" extension="9879"/>
+		    <assignedPerson determinerCode="INSTANCE" classCode="PSN">
+		        <!-- 审核医生名称 -->
+				<name>陈云</name>
+			</assignedPerson>
+		</assignedEntity>
+	</authenticator>
+	<authenticator>
+	    <!-- 审核日期 -->
+	    <time value="201112311010" />
+	    <signatureCode code="S"/>
+		<assignedEntity classCode="ASSIGNED">
+	        <!-- 审核医生编码 -->
+			<id root="1.2.156.112635.1.1.2" extension="9880"/>
+		    <assignedPerson determinerCode="INSTANCE" classCode="PSN">
+		        <!-- 审核医生名称 -->
+				<name>陈风</name>
+			</assignedPerson>
+		</assignedEntity>
+	</authenticator>	
+
+	<!-- 申请医生和申请科室信息 -->
+	<participant typeCode="AUT">
+		<associatedEntity classCode="ASSIGNED">
+			<!-- 申请医生编码 -->
+			<id root="1.2.156.112635.1.1.2" extension="67890" />
+			<associatedPerson>
+				<!-- 申请医生名称 -->
+				<name>王二小</name>
+			</associatedPerson>
+			
+			<scopingOrganization classCode="ORG" determinerCode="INSTANCE">
+			    <!-- 申请科室编码 -->
+			    <id root="1.2.156.112635.1.1.1" extension="98712"/>
+	            <!-- 申请科室名称 -->
+			        <name>普通内科</name>
+			</scopingOrganization>
+			
+		</associatedEntity>
+	</participant>
+	
+	 	 
+	<!-- 关联医嘱/申请单信息 -->
+	<inFulfillmentOf>
+		<order>
+			<!-- 关联医嘱/申请单号(可多个) -->
+			<id extension="123"/>
+			<id extension="234"/>
+			<id extension="345"/>
+			<id extension="456"/>
+			<id extension="567"/>
+			<!--可多个,当还有需要关联的医嘱号时参照上述格式添加-->
+		</order>
+	</inFulfillmentOf>
+	
+    <!-- 文档中医疗卫生事件的就诊场景 -->
+	<componentOf typeCode="COMP">
+		<!-- 就诊信息 -->
+		<encompassingEncounter classCode="ENC" moodCode="EVN">
+		    <!-- 就诊次数 -->
+			<id root="1.2.156.112635.1.2.1.7" extension="3"/>
+		    <!-- 就诊流水号 -->
+			<id root="1.2.156.112635.1.2.1.6" extension="123456789"/>			
+            <!-- 就诊类别编码/就诊类别名称 -->
+			<code code="03" codeSystem="1.2.156.112635.1.1.80" displayName="门诊" />			
+			<effectiveTime />
+			<responsibleParty typeCode="RESP">
+				<assignedEntity classCode="ASSIGNED">
+					<id></id>
+					<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+						<name>病人所在科室</name>
+					</representedOrganization>
+				</assignedEntity>
+			</responsibleParty>
+			<location typeCode="LOC">
+				<healthCareFacility classCode="SDLOC">
+					<serviceProviderOrganization classCode="ORG" determinerCode="INSTANCE">
+						<id root="1.23.34" extension="bed001"/>
+						<name>床位号</name>
+						<asOrganizationPartOf classCode="PART">
+							<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+								<id root="1.2.34" extension="01"/>
+								<name>病区</name>
+							</wholeOrganization>
+						</asOrganizationPartOf>
+					</serviceProviderOrganization>
+				</healthCareFacility>
+			</location>
+		</encompassingEncounter>
+	</componentOf>
+	
+<!--
+********************************************************
+CDA Body
+********************************************************
+-->
+	<component>
+		<structuredBody>
+		
+			<!-- 
+			********************************************************
+			文档中患者相关信息，比如年龄
+			********************************************************
+			-->
+            <component>
+                <section>
+                    <code code="34076-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Information for patients section" />
+                    <title>文档中患者相关信息</title>
+                    <!-- 患者年龄 -->
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="397669002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="age" />
+                            <value xsi:type="ST">11岁</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+
+
+			<!--
+			********************************************************
+			检查章节
+			********************************************************
+			-->
+			<component>
+				<section>
+					<code code="30954-2" displayName="STUDIES SUMMARY" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title>检查</title>
+					<!-- 相关信息 -->
+				    <entry>
+				        <organizer classCode="BATTERY" moodCode="EVN">
+				            <code code="310388008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="relative information status" />
+							<statusCode code="completed" />
+							
+							<!-- 定位图像信息 -->
+							<component>
+							    <supply classCode="SPLY" moodCode="EVN">
+							        <!-- 图像索引号(accessionNumber) -->
+							        <id extension="123456" />
+							    </supply>
+							</component>
+							<!-- 整张报告图片信息 -->
+							<component>
+								<observationMedia classCode="OBS" moodCode="EVN">
+									<!-- 图片信息(要求编码为BASE64), @mediaType: 图片格式(JPG格式: image/jpeg PDF格式为: application/pdf) -->
+									<value xsi:type="ED" mediaType="application/pdf">
+									TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz
+									</value>
+								</observationMedia>
+							</component>
+						
+						</organizer>
+					</entry>
+					
+	                <!--****************************************************************************-->
+					<!-- 检查报告条目 -->
+                    <entry typeCode="DRIV">
+		                <organizer classCode="BATTERY" moodCode="EVN">
+		                    
+		                    <!-- 检查号--> 
+                            <id extension="140D05" /> 
+
+		                    <!-- 检查类型编码/检查类型名称 -->
+		                    <code code="185" codeSystem="1.2.156.112635.1.1.41" displayName="US" />
+		                 
+		                    <!-- 必须固定项 -->
+			                <statusCode code="completed"/>
+
+			                <!-- study 1 -->
+			                <component typeCode="COMP">
+			                	<procedure classCode="PROC" moodCode="EVN">
+			                		<!-- 检查项目编码/检查项目名称 -->
+			                		<code code="1" codeSystem="1.2.156.112635.1.1.88" displayName="颈部血管彩色多普勒超声"/>
+			                		<statusCode code="completed"/>
+			                		<!-- 检查部位编码/检查部位名称 -->
+			                		<targetSiteCode code="009" codeSystem="1.2.156.112635.1.1.42" displayName="颈部" />
+			                		<!-- 检查医师信息 -->
+			                		<performer>
+			                			<!-- 检查日期 -->
+			                			<time value="201112310910"/>
+			                			<assignedEntity>
+			                				<!-- 检查医生编码 -->
+			                				<id  root="1.2.156.112635.1.1.2" extension="9879"/>
+			                				<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+			                					<!-- 检查医生名称 -->
+			                					<name>陈小星</name>
+			                				</assignedPerson>
+			                				<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+			                					<!-- 检查房间编码 -->
+			                					<id root="1.2.156.112635.1.1.1" extension="98712"/>
+			                					<!-- 检查房间名称 -->
+			                					<name>US1室</name>
+			                					<asOrganizationPartOf>
+			                						<wholeOrganization>
+			                							<!--检查科室编码-->
+			                							<id root="1.2.156.4" extension="jdff"></id>
+			                							<!--检查科室名称-->
+			                							<name>超声科</name>
+			                						</wholeOrganization>
+			                					</asOrganizationPartOf>
+			                				</representedOrganization>
+			                			</assignedEntity>
+			                		</performer>
+			                		<participant typeCode="DEV">
+			                			<!-- 当使用24小时动态心电图hoter时用 -->
+			                			<time>
+			                				<!--记录开始时间-->
+			                				<low value="081300"/>
+			                				<!--记录总时间-->
+			                				<!--
+													PQ: <value xsi:type="PQ" value="19.1" unit="10^9/L" />  											数值类型的结果+单位(没有单位去掉@unit, 没有结果去掉@value)
+													SC: <value xsi:type="SC">1mm</value>  文本类型结果或者数字结果和单位无法分开的
+													-->	
+			                				<width xsi:type="PQ" value="24" unit="小时"/>
+			                			</time>
+			                			<participantRole>
+			                				<playingDevice>
+			                					<!--仪器型号-->
+			                					<manufacturerModelName code="LOGIQ-9"></manufacturerModelName>
+			                				</playingDevice>
+			                			</participantRole>
+			                		</participant>
+			                	</procedure>
+				                <observation classCode="OBS" moodCode="EVN">
+					                <!-- 检查项目编码/检查项目名称 -->
+					                <code code="1" codeSystem="1.2.156.112635.1.1.88" displayName="颈部血管彩色多普勒超声"/>
+									
+                                    <!-- 检查备注 -->
+					                <text>正常</text>
+					                 
+					                <!-- 必须固定项 -->
+					                <statusCode code="completed"/>
+					                
+					                <!-- 检查方法编码/检查方法名称 -->
+					                <methodCode code="001"  codeSystem="1.2.156.112635.1.1.43" displayName="正侧位"/>
+					                
+                                    <!-- 检查部位编码/检查部位名称 -->
+					                <targetSiteCode code="009" codeSystem="1.2.156.112635.1.1.42" displayName="颈部" />
+					                
+					                <!-- 检查医师信息 -->
+					                <performer>
+					                    <!-- 检查日期 -->
+	                                    <time value="201112310910"/>
+										<assignedEntity>
+											<!-- 检查医生编码 -->
+			                                <id  root="1.2.156.112635.1.1.2" extension="9879"/>
+		                                    <assignedPerson determinerCode="INSTANCE" classCode="PSN">
+		                                        <!-- 检查医生名称 -->
+				                                <name>陈小星</name>
+			                                </assignedPerson>
+			                                <representedOrganization classCode="ORG" determinerCode="INSTANCE">
+			                                   <!-- 检查房间编码 -->
+			                                   <id root="1.2.156.112635.1.1.1" extension="98712"/>
+										       <!-- 检查房间名称 -->
+										       <name>US1室</name>
+										       <asOrganizationPartOf>
+												   <wholeOrganization>
+													   <!--检查科室编码-->
+													   <id root="1.2.156.4" extension="jdff"></id>
+													   <!--检查科室名称-->
+													   <name>超声科</name>
+												   </wholeOrganization>
+										       </asOrganizationPartOf>
+									        </representedOrganization>
+										</assignedEntity>
+									</performer>
+									
+									<participant typeCode="DEV">
+										<!--对应动态心电图-->
+										<time>
+											<!--记录开始时间-->
+											<low value="081300"/>
+											<!--记录总时间-->
+											<!--
+													PQ: <value xsi:type="PQ" value="19.1" unit="10^9/L" />  											数值类型的结果+单位(没有单位去掉@unit, 没有结果去掉@value)
+													SC: <value xsi:type="SC">1mm</value>  文本类型结果或者数字结果和单位无法分开的
+													-->	
+											<width xsi:type="PQ" value="24" unit="小时"/>
+										</time>
+										<participantRole>
+											<playingDevice>
+												<!--仪器型号-->
+												<manufacturerModelName code="LOGIQ-9"></manufacturerModelName>
+											</playingDevice>
+										</participantRole>
+									</participant>									
+									
+									<!-- 药物相关信息 -->
+									<entryRelationship typeCode="REFR ">
+										<substanceAdministration classCode="SBADM" moodCode="EVN ">
+											<!--给药方式-->
+											<routeCode code="01"  displayName="静脉注射" codeSystem="1.2.156.112635.1.1.38"></routeCode>
+											<!--药物剂量 药物剂量单位-->
+											<doseQuantity value="25" unit="mci"></doseQuantity>
+											<consumable>
+												<manufacturedProduct>
+													<manufacturedLabeledDrug>
+														<!-- 试剂编码 -->
+														<code code="10599"></code>
+														<!-- 试剂名称 -->
+														<name xsi:type="EN">99m-TC-MDP</name>
+													</manufacturedLabeledDrug>
+												</manufacturedProduct>
+											</consumable>
+										</substanceAdministration>
+									</entryRelationship>
+									
+									<!-- 仪器或医生客观所见信息(心动超声和动态心电图等结构化所见部分的信息) -->
+									<entryRelationship typeCode="COMP">
+									    <organizer classCode="BATTERY" moodCode="EVN">
+									        <code code="365605003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="body measurement finding" />
+											<statusCode code="completed" />
+											
+											<!-- 项目信息(可循环) -->
+											<!--
+											PQ: <value xsi:type="PQ" value="19.1" unit="10^9/L" />  											数值类型的结果+单位(没有单位去掉@unit, 没有结果去掉@value)
+											SC: <value xsi:type="SC">1mm</value>  文本类型结果或者数字结果和单位无法分开的
+											-->	
+											
+											<!-- 当只有一级关系时使用 -->									    
+											<component>
+												<observation classCode="OBS" moodCode="EVN">
+													<code code="100" displayName="AOD" />
+													<value xsi:type="SC">1mm</value>
+												</observation>
+											</component>
+											
+											<!-- 存在多级关系时使用 -->
+											<component>
+												<observation classCode="OBS" moodCode="EVN">
+												    <!-- 项目编码/项目名称 -->
+													<code code="100" displayName="心率" />
+													<!-- 带单位的类型为PQ，不带单位为SC 项目结果值文本 数据类型为SC的去掉@Unit-->
+													<value xsi:type="SC"></value>
+													<entryRelationship typeCode="COMP">
+														<organizer classCode="BATTERY" moodCode="EVN">
+															<statusCode code="completed" />
+
+															<!-- 具体检查项信息(可循环) -->
+															<!--带单位的类型为PQ，不带单位为SC-->
+															
+															<component>
+																<observation classCode="OBS" moodCode="EVN">
+																	<code code="100" displayName="最慢心率" />
+																	<!--占总数等说明-->
+																	<text>发生时间（02:04:3619-四月）</text>
+																	<value xsi:type="PQ" value="50" unit="次/分"></value>	
+																</observation>
+															</component>						
+															<!-- 其它信息按上面格式添加 -->
+
+														</organizer>
+													</entryRelationship>
+												</observation>
+											</component>
+											<!-- 其它信息按上面格式添加 -->
+										</organizer>
+									</entryRelationship>
+									
+									<!-- 图像信息 -->
+							        <entryRelationship typeCode="SPRT">
+										<observationMedia classCode="OBS" moodCode="EVN">
+											<!-- 影像信息(要求编码为BASE64), @mediaType: 影像格式 -->
+											<value xsi:type="ED" mediaType="image/gif">
+												TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz
+												IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg
+												dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu
+												dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo
+												ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
+											</value>
+										</observationMedia>
+									</entryRelationship>
+									<!-- 当有多个影像对应同一个study时,可以复用此entryRelationship -->
+				                </observation>
+				            </component>
+				            
+				            <!-- study 2 -->
+			                <component typeCode="COMP">
+				                <observation classCode="OBS" moodCode="EVN">
+					                <!-- 检查项目编码/检查项目名称 -->
+					                <code code="1" codeSystem="1.2.156.112635.1.1.88" displayName="颈部血管彩色多普勒超声"/>
+									
+                                    <!-- 检查备注 -->
+					                <text>正常</text> 
+					                
+					                <!-- 必须固定项 -->
+					                <statusCode code="completed"/>
+                                 
+					                <!-- 检查报告结果-客观所见/影像学表现(能够与项目对应时的填写处 - @code:01表示客观所见, 02表示主观提示) -->
+					                <value xsi:type="CD" code="01" codeSystem="1.2.156.112635.1.1.98">
+										<originalText>医生对检查图像客观所见的描述</originalText>
+					                </value>
+					                
+					                <!-- 检查报告结果-主观提示/影像学结论(能够与项目对应时的填写处 - @code:01表示客观所见, 02表示主观提示) -->
+					                <value xsi:type="CD" code="02" codeSystem="1.2.156.112635.1.1.98">
+										<originalText>医生根据主观所见得出的结论(诊断)</originalText>
+					                </value>
+					                
+					                <!-- 检查方法编码/检查方法名称 -->
+					                <methodCode code="002"  codeSystem="1.2.156.112635.1.1.43" displayName="俯卧位"/>
+					                
+					                <!-- 检查部位编码/检查部位名称 -->
+					                <targetSiteCode code="009" codeSystem="1.2.156.112635.1.1.42" displayName="颈部" />
+					                
+					                <!-- 检查医师信息 -->
+					                <performer>
+					                    <!-- 检查日期 -->
+	                                    <time value="201112310910"/>
+										<assignedEntity>
+											<!-- 检查医生编码 -->
+			                                <id  root="1.2.156.112635.1.1.2" extension="9879"/>
+		                                    <assignedPerson determinerCode="INSTANCE" classCode="PSN">
+		                                        <!-- 检查医生名称 -->
+				                                <name>陈小星</name>
+			                                </assignedPerson>
+			                                <representedOrganization classCode="ORG" determinerCode="INSTANCE">
+			                                   <!-- 检查科室编码 -->
+			                                   <id root="1.2.156.112635.1.1.1" extension="98712"/>
+										       <!-- 检查科室名称 -->
+										       <name>放射科</name>
+									        </representedOrganization>
+										</assignedEntity>
+									</performer>
+							        
+							        <!-- 图像信息(能与项目对应的图像) -->
+									<entryRelationship typeCode="SPRT">
+										<observationMedia classCode="OBS" moodCode="EVN">
+											<!-- 影像信息(要求编码为BASE64), @mediaType: 影像格式 -->
+											<value xsi:type="ED" mediaType="image/gif">
+												TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz
+												IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg
+												dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu
+												dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo
+												ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
+											</value>
+										</observationMedia>
+									</entryRelationship>
+									<!-- 当有多个影像对应同一个study时,可以复用此entryRelationship -->
+							        
+				                </observation>   
+				            </component>
+				            <!-- 其他项目按上面结构和格式添加 -->
+							
+							 <!-- 冠脉造影及介入手术信息(CVIS冠脉造影及介入手术报告的信息) -->
+				            <component>
+				                <organizer classCode="BATTERY" moodCode="EVN">
+				                    <code code="415070008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="percutaneous coronary intervention" />
+									<statusCode code="completed" />
+									
+									<component>
+									    <procedure classCode="PROC" moodCode="EVN">
+					                        <!-- 检查项目编码/检查项目名称 -->
+					                        <code code="100" codeSystem="1.2.156.112606.1.1.88" displayName="造影及介入"/>
+					                        
+									        <statusCode code="completed" />
+									        
+									        <!-- 手术日期 -->
+									        <effectiveTime value="201112311010" />
+									        
+									        <!-- 术者信息(可循环) -->
+									        <performer>
+												<assignedEntity>
+												    <!-- 术者编码 -->
+													<id root="1.2.156.112606.1.1.2" extension="P1" />
+													<!-- 术者名称 -->
+													<assignedPerson>
+													    <name>刘小小</name>
+													</assignedPerson>
+												</assignedEntity>
+											</performer>
+											
+											<!-- 助手信息(可循环) -->
+											<participant typeCode="ATND">
+												<participantRole>
+												    <!-- 助手编码 -->
+												    <id root="1.2.156.112606.1.1.2" extension="A1" />
+												    <playingEntity>
+												        <!-- 助手名称 -->
+												        <name>王小小</name>
+												    </playingEntity>
+												</participantRole>
+											</participant>
+											<participant typeCode="ATND">
+												<participantRole>
+												    <!-- 助手编码 -->
+												    <id root="1.2.156.112606.1.1.2" extension="A2" />
+												    <playingEntity>
+												        <!-- 助手名称 -->
+												        <name>张小小</name>
+												    </playingEntity>
+												</participantRole>
+											</participant>
+											
+											<!-- 执行地点信息 -->
+											<participant typeCode="LOC">
+												<participantRole>
+												    <!-- 手术间编码 -->
+												    <id root="1.2.156.112606.1.1.1" extension="000" />
+												    <playingEntity>
+												        <!-- 手术间名称 -->
+												        <name>ROOM A</name>
+												    </playingEntity>
+												</participantRole>
+											</participant>
+											
+											<!-- 报告上各项信息 -->
+											<entryRelationship typeCode="COMP">
+												<organizer classCode="BATTERY" moodCode="EVN">
+													<statusCode code="completed" />
+													<!-- 项目信息(可循环) -->
+													<!-- 穿刺部位 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="1000" displayName="穿刺部位" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">右桡动脉</value>
+														</observation>
+													</component>
+													
+													<!-- 造影耗材 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="2000" displayName="造影耗材" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">
+																鞘管 IK  II鞘组(内径：6；长度：10)
+																造影导丝和导管 Emeraid诊断导丝 （造影导管）(0.035F*260CM；502455)
+																              Outlook造影导管(泰尔茂 直径5Fr 长度110CM)
+                                                            </value>
+														</observation>
+													</component>
+													
+													<!-- 造影检查结果 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="3000" displayName="造影检查结果" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">
+																冠脉优势型：右冠优势型 
+																左主干未见明显狭窄。
+																前降支近段80%x10mm狭窄，前向TIMI血流3级。
+																回旋支 未见明显狭窄。
+																右冠 未见明显狭窄。
+                                                            </value>
+														</observation>
+													</component>
+													
+													<!-- 造影结论 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="4000" displayName="造影检查结果" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">
+																1、冠状动脉粥样硬化性心脏病
+																2、单支病变，累及： 前降支
+                                                            </value>
+														</observation>
+													</component>
+													
+													<!-- 左室造影 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="5000" displayName="左室造影" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">未行</value>
+														</observation>
+													</component>
+													
+													<!-- 冠脉生理及功能学检查 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="6000" displayName="冠脉生理及功能学检查" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">未行</value>
+														</observation>
+													</component>
+													
+													<!-- 穿刺部位处理方式 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="7000" displayName="穿刺部位处理方式" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">压迫器止血</value>
+														</observation>
+													</component>
+													
+													<!-- 术中对比剂用量 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="8000" displayName="术中对比剂用量" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">典比乐，用量： 100 ml</value>
+														</observation>
+													</component>
+													
+													<!-- PCI干预血管 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="9000" displayName="PCI干预血管" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">右冠</value>
+														</observation>
+													</component>
+													
+													<!-- 介入手术记录 -->
+													<component>
+														<observation classCode="OBS" moodCode="EVN">
+														    <!-- 项目编码/项目名称 -->
+															<code code="10000" displayName="介入手术记录" />
+															<!-- 项目值 -->
+															<value xsi:type="SC">
+																经动脉鞘管追加8000U肝素，冠状动脉内注射硝酸甘油注射液200ug，经动脉鞘管送入6F J
+																R4.0 指引导管至右冠开口，提示压力崁顿，沿指引导管送入Runthrough NS导丝通过右冠
+																近段闭塞处，反复进入锐缘支，遂沿指引导管送入另一根BMW 导丝至右冠近段闭塞处病变
+																处，但不能通过中远段病变，保留BMW导丝增加支撑力，继续前送Runthrough NS导丝达右
+																冠远段，沿Runthrough NS导丝送入Sprinter2.0x15mm球囊至右冠近段病变处及中远段病
+																变处，以 8-8-8-10atm x 5s 扩张4次，撤出球囊。沿Runthrough NS导丝送入Excel2.5x3
+																6mm支架至右冠中远段病变处，准确定位后，以12atm x 5s 释放，撤出支架球囊及BMW导
+																丝。沿Runthrough NS导丝送入Excel2.5x36mm支架至右冠近中段病变处，与前一支架重叠
+																2-3 mm，准确定位后，以13atm x 5s 释放，撤出支架球囊。沿Runthrough NS导丝送入Ex
+																cel2.75x18mm支架至右冠近段，覆盖开口，与第二枚支架重叠2-3 mm，准确定位后，以14
+																atm x 5s 释放，回撤支架球囊，以18atmx5s扩张支架开口，撤出支架球囊。沿Runthroug
+																h NS导丝送入Voyager NC2.75x15mm球囊至右冠近端2.5x36mm支架内，由远至近至右冠开
+																口以16-16-18 atmx5s 扩张3次，撤出球囊。多角度复查造影示支架展开良好，无残余狭
+																窄、夹层、撕裂，前向血流TIMI3级。撤出指引导管、指引导丝，伤口处止血器加压包扎
+																。
+															</value>
+														</observation>
+													</component>
+													<!-- 其它信息按上面格式添加 -->
+												</organizer>
+											</entryRelationship>
+									    </procedure>
+									</component>
+									
+								</organizer>
+							</component>
+							
+						</organizer>
+				    </entry>
+				    <!-- 阳性标志 -->
+				    <entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="02" codeSystem="1.2.234" displayName="阳性标志"/>
+							<value xsi:type="CD" code="01" codeSystem="1.2.345" displayName="阳性"/>
+						</observation>
+					</entry>
+				</section>
+			</component>			
+
+			<!--
+			********************************************************
+			检查所见/报告所见章节
+			********************************************************
+			-->
+			<component>
+				<section>
+					<!-- code用来区分该Section是检查所见，displayName和下面的title可以二选一，建议使用title -->
+					<code code="01" codeSystem="1.2.34" displayName="报告结论"/>
+					<title>检查所见</title>
+					<text>双肺野清晰，未见具体病灶。心影不大。双侧膈面清晰，双侧肋膈角锐利。</text>
+				</section>
+			</component>
+
+			<!--
+			********************************************************
+			检查结论/报告结论章节
+			********************************************************
+			-->
+			<component>
+				<section>
+					<!-- code用来区分该Section是检查报告结论，displayName和下面的title可以二选一，建议使用title -->
+					<code code="02" codeSystem="1.2.34" displayName="报告结论"/>
+					<title>报告结论</title>
+					<text>双肺心膈未见明确异常</text>
+				</section>
+			</component>
+<!--
+********************************************************
+诊断
+********************************************************
+-->
+			<component>
+				<section>
+					<code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/> 
+					<title>诊断</title> 
+					<entry typeCode="DRIV">
+						<act classCode="ACT" moodCode="EVN">
+							<code nullFlavor="NA"/>
+							<entryRelationship typeCode="SUBJ">
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- 诊断类别编码/诊断类别名称 -->
+									<code code="02" codeSystem="1.2.156.112635.1.1.29" displayName="门诊诊断" />
+										
+									<statusCode code="completed"/>
+									 
+                                    <!-- 疾病编码/疾病名称(没有编码去掉@code) -->
+									<value xsi:type="CD" code="233604007" codeSystem="1.2.156.112635.1.1.30" displayName="肺炎" />
+									<author>
+										<!-- 诊断时间 -->
+										<time value="20180719"></time>
+										<assignedAuthor>
+											<!--诊断医生工号-->
+											<id root="1.2.34" extension="3445"/>
+											<assignedPerson>
+												<!--诊断医生姓名-->
+												<name>zhangsan</name>
+											</assignedPerson>
+										</assignedAuthor>
+									</author>        
+								</observation>
+							</entryRelationship>
+						</act>
+					</entry>
+				</section>
+		    </component>
+         
+		</structuredBody>
+	</component>
+
+</ClinicalDocument>
