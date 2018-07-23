@@ -23,7 +23,7 @@ This document was rendered into XML using software provided to HL7 by Beeler Con
    <xs:include schemaLocation="MCCI_MT000100UV01.xsd"/>
    <xs:include schemaLocation="MCAI_MT700201UV01.xsd"/>
    <xs:include schemaLocation="POOR_MT200999UV20.xsd"/>
-   <xs:element name="POOR_IN200901UV">
+   <xs:element name="POOR_IN200901UV20">
       <xs:complexType>
          <xs:complexContent>
             <xs:extension base="POOR_IN200901UV.MCCI_MT000100UV01.Message">
