@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../coreschemas/CDA.xsd">
+	<!--===================================-->
+	<!-- 输血记录单信息                         -->
+	<!--===================================-->
+	<!--
+********************************************************
+  CDA Header
+********************************************************
+-->
+	<!-- 文档适用范围编码 -->
+	<realmCode code="CN"/>
+	<!-- 文档信息模型类别-标识符 -->
+	<!-- 固定值 -->
+	<typeId root="1.2.156.112722.1.3.1" extension="POCD_HD000040"/>
+	<!-- 文档标识ID-文档号 -->
+	<id root="1.2.156.112722.1.2.1.27" extension="c266"/>
+	<!-- 文档标识-名称 / 文档标识-类别编码 -->
+	<!--固定值-->
+	<code code="05" codeSystem="1.2.156.112722.1.1.50" displayName="输血记录单"/>
+	<!--服务ID-->
+	<templateId root="1.2.156.112722.1.1.32" extension="BS0603"/>
+	<!-- 文档标题文本 -->
+	<title>输血记录单</title>
+	<!-- 文档生效日期 -->
+	<effectiveTime value="20140225"/>
+	<!-- 文档密级编码 -->
+	<confidentialityCode code="N" codeSystem="1.2.156.112722.1.1.51" codeSystemName="Confidentiality" displayName="normal"/>
+	<!-- 文档语言编码 -->
+	<!-- 固定值 -->
+	<languageCode code="zh-CN"/>
+	<!-- 文档的操作版本:0表示新增, 1表示修改，-1表示删除 -->
+	<versionNumber value="0"/>
+	<!-- 文档记录对象 -->
+	<recordTarget typeCode="RCT">
+		<!-- 病人信息 -->
+		<patientRole classCode="PAT">
+			<!-- 域ID -->
+			<id root="1.2.156.112722.1.2.1.2" extension="222"/>
+			<!-- 患者ID -->
+			<id root="1.2.156.112722.1.2.1.3" extension="333"/>
+			<!-- 就诊号 -->
+			<id root="1.2.156.112722.1.2.1.7" extension="121212"/>
+			<!-- 病人基本信息 -->
+			<patient classCode="PSN" determinerCode="INSTANCE">
+				<!-- 患者名称 -->
+				<name>刘小三</name>
+				<!-- 性别编码/性别名称 -->
+				<administrativeGenderCode code="F" codeSystem="1.2.156.112722.1.1.9" displayName="女"/>
+				<!-- 出生日期 -->
+				<birthTime value="20000101"/>
+			</patient>
+			<providerOrganization classCode="ORG" determinerCode="INSTANCE">
+			</providerOrganization>
+		</patientRole>
+	</recordTarget>
+	<!-- 文档作者 -->
+	<author typeCode="AUT">
+		<!-- 报告时间 -->
+		<time value="201107111010"/>
+		<assignedAuthor classCode="ASSIGNED">
+			<!-- 报告医生编码 -->
+			<id root="1.2.156.112722.1.1.34" extension="9876"/>
+			<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+				<!-- 报告医生名称 -->
+				<name>王小红</name>
+			</assignedPerson>
+		</assignedAuthor>
+	</author>
+	<!-- 文档保管者(CDA中custodian为必填项) -->
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+				<!-- 医疗机构编码 -->
+				<id root="1.2.156.112722" extension="400010558"/>
+				<!-- 医疗机构名称 -->
+				<name>北京大学第一医院</name>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!-- 电子签章信息 -->
+	<legalAuthenticator>
+		<time/>
+		<signatureCode code="S"/>
+		<assignedEntity>
+			<id extension="电子签章号"/>
+		</assignedEntity>
+	</legalAuthenticator>
+	<!-- 关联的服务事件信息 -->
+	<documentationOf>
+		<serviceEvent>
+			<!-- 服务ID -->
+			<id extension="BS360"/>
+		</serviceEvent>
+	</documentationOf>
+	<!-- 文档中医疗卫生事件的就诊场景 -->
+	<componentOf typeCode="COMP">
+		<!-- 就诊 -->
+		<encompassingEncounter classCode="ENC" moodCode="EVN">
+			<!-- 就诊次数 -->
+			<id root="1.2.156.112722.1.2.1.22" extension="3"/>
+			<!-- 就诊流水号 -->
+			<id root="1.2.156.112722.1.2.1.21" extension="123456789"/>
+			<!-- 就诊类别编码/就诊类别名称 -->
+			<code code="03" codeSystem="1.2.156.112722.1.1.41" displayName="门诊"/>
+<!-- 入院日期时间 DE06.00.092.00	-->
+			<effectiveTime/>
+			<location>
+				<healthCareFacility>
+					<serviceProviderOrganization>
+						<asOrganizationPartOf classCode="PART">
+							<!-- DE01.00.026.00	病床号 -->
+							<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+								<id root="1.2.156.112722.1.2.1.36" extension="001"/>
+								<name>001床</name>
+								<!-- DE01.00.019.00	病房号 -->
+								<asOrganizationPartOf classCode="PART">
+									<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+										<id root="1.2.156.112722.1.2.1.41" extension="201"/>
+										<name>201房间</name>
+										<!-- DE08.10.026.00	科室名称 -->
+										<asOrganizationPartOf classCode="PART">
+											<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+												<id root="1.2.156.112722.1.1.15" extension="3001"/>
+												<name>呼吸内科</name>
+												<!-- DE08.10.054.00	病区名称 -->
+												<asOrganizationPartOf classCode="PART">
+													<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id root="1.2.156.112722.1.1.33" extension="40001"/>
+														<name>呼吸病区</name>
+														<!--院区编码/院区名称 -->
+														<asOrganizationPartOf classCode="PART">
+															<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+																<id root="1.2.156.112722.1.1.58" extension="002"/>
+																<name>男科</name>
+																<!--医疗机构编码/医疗机构名称 -->
+																<asOrganizationPartOf classCode="PART">
+																	<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+																		<id root="1.2.156.112722" extension="400010558"/>
+																		<name>北京大学第一医院</name>
+																	</wholeOrganization>
+																</asOrganizationPartOf>
+															</wholeOrganization>
+														</asOrganizationPartOf>
+													</wholeOrganization>
+												</asOrganizationPartOf>
+											</wholeOrganization>
+										</asOrganizationPartOf>
+									</wholeOrganization>
+								</asOrganizationPartOf>
+							</wholeOrganization>
+						</asOrganizationPartOf>
+					</serviceProviderOrganization>
+				</healthCareFacility>
+			</location>
+		</encompassingEncounter>
+	</componentOf>
+	<!--
+********************************************************
+CDA Body
+********************************************************
+-->
+	<component>
+		<structuredBody>
+			<!--
+******************************************************
+整个文档图片信息
+******************************************************
+-->
+			<component>
+				<section>
+					<code code="20001" codeSystem="1.2.156.112722.1.2.1.37"/>
+					<entry>
+						<observationMedia classCode="OBS" moodCode="EVN">
+							<value xsi:type="ED" mediaType="application/pdf">PDF文件的Base64码</value>
+						</observationMedia>
+					</entry>
+				</section>
+			</component>
+			<!-- 
+********************************************************
+文档中患者相关信息
+********************************************************
+-->
+			<component>
+				<section>
+					<code code="34076-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Information for patients section"/>
+					<title>文档中患者相关信息</title>
+					<!-- 患者年龄 -->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="397669002" codeSystem="1.2.156.112722.1.2.1.30" codeSystemName="SNOMED CT" displayName="age"/>
+							<value xsi:type="ST">11岁</value>
+						</observation>
+					</entry>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- ABO血型项目编码 -->
+							<code code="365637002" codeSystem="1.2.156.112722.1.1.19" codeSystemName="SNOMED CT" displayName="ABO blood group"/>
+							<!-- ABO血型结果编码  ABO血型结果名称 -->
+							<value xsi:type="CD" code="01" codeSystem="1.2.156.112722.1.1.19" displayName="A型"/>
+						</observation>
+					</entry>
+					<entry>
+						<observation moodCode="EVN" classCode="OBS">
+							<!-- Rh血型项目编码-->
+							<code code="365638007" codeSystem="1.2.156.112722.1.1.20" codeSystemName="SNOMED CT" displayName="rh blood group"/>
+							<!-- Rh血型结果编码 Rh血型结果名称 -->
+							<value xsi:type="CD" code="01" codeSystem="1.2.156.112722.1.1.20" displayName="阳"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--
+********************************************************
+输血记录章节
+********************************************************
+-->
+			<component>
+				<section>
+					<code code="924-1" codeSystem="1.2.156.112722.1.1.52" codeSystemName="LOINC" displayName="Blood product dispensed"/>
+					<title>输血记录</title>
+					<entry>
+						<substanceAdministration moodCode="RQO" classCode="SBADM">
+							<!-- 输血申请单ID -->
+							<id extension="111345"/>
+							<consumable>
+								<manufacturedProduct classCode="MANU">
+									<manufacturedLabeledDrug determinerCode="KIND"/>
+								</manufacturedProduct>
+							</consumable>
+							<entryRelationship typeCode="REFR">
+								<observation moodCode="EVN" classCode="OBS">
+									<!-- 申请ABO血型项目编码 -->
+									<code code="365637002" codeSystem="1.2.156.112722.1.1.19" codeSystemName="SNOMED CT" displayName="ABO blood group"/>
+									<!-- 申请ABO血型结果编码  申请ABO血型结果名称 -->
+									<value xsi:type="CD" code="01" codeSystem="1.2.156.112722.1.1.19" displayName="A型"/>
+								</observation>
+							</entryRelationship>
+							<entryRelationship typeCode="REFR">
+								<observation moodCode="EVN" classCode="OBS">
+									<!-- 申请Rh血型项目编码-->
+									<code code="365638007" codeSystem="1.2.156.112722.1.1.20" codeSystemName="SNOMED CT" displayName="rh blood group"/>
+									<!-- 申请Rh血型结果编码 申请Rh血型结果名称 -->
+									<value xsi:type="CD" code="01" codeSystem="1.2.156.112722.1.1.20" displayName="阳"/>
+								</observation>
+							</entryRelationship>
+							<entryRelationship typeCode="REFR">
+								<observation moodCode="EVN" classCode="OBS">
+									<code code="10390-3" codeSystem="1.2.156.112722.1.1.68" codeSystemName="LOINC" displayName="Blood product special preparation"/>
+									<!-- 血液特殊要求编码  血液特殊要求名称 -->
+									<value xsi:type="CD" code="01" displayName="辐照"/>
+								</observation>
+							</entryRelationship>
+							<!-- 1..n项目信息(可循环) - 一个血袋一个supply项目-->
+							<entryRelationship typeCode="COMP">
+								<supply moodCode="EVN" classCode="SPLY">
+									<!-- 发血日期/出库日期 -->
+									<effectiveTime value="20140303102010"/>
+									<!-- 单位（规格） 量（规格）  -->
+									<quantity unit="ml" value="200"/>
+									<product typeCode="PRD">
+										<manufacturedProduct classCode="MANU">
+											<!-- 血袋ID -->
+											<id extension="0010111068010" root="1.2.156.112722.1.2.2.3"/>
+											<!-- 血袋条码号 -->
+											<id extension="0010111068010" root="1.2.156.112722.1.2.2.4"/>
+											<!-- 血袋区别码 -->
+											<id extension="0010111068010" root="1.2.156.112722.1.2.2.5"/>
+											<!--产品码-->
+											<id extension="D653900" root="1.2.156.112722.1.2.2.6"/>
+											<manufacturedLabeledDrug classCode="MMAT">
+												<!-- 供血种类编码 -->
+												<code code="2" codeSystem="1.2.156.112722.1.1.67"/>
+												<!--<prefix=ABO血型><suffix=RH血型>供血种类名称  -->
+												<name xsi:type="EN">
+													<prefix>B</prefix>
+													<suffix>阳</suffix>
+													<given>手工分冻血浆（新鲜）</given>
+												</name>
+											</manufacturedLabeledDrug>
+										</manufacturedProduct>
+									</product>
+									<performer typeCode="PRF">
+										<assignedEntity classCode="ASSIGNED">
+											<!-- 发血者编码 -->
+											<id extension="01001" root="1.2.156.112722.1.1.34"/>
+											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+												<!-- 发血者名称 -->
+												<name>张三</name>
+											</assignedPerson>
+										</assignedEntity>
+									</performer>
+									<participant typeCode="RCV">
+										<!-- 取血日期 -->
+										<time value="20140303102010"/>
+										<participantRole classCode="ROL">
+											<!-- 取血者编码 -->
+											<id extension="0101" root="1.2.156.112722.1.1.34"/>
+											<playingEntity classCode="ENT" determinerCode="INSTANCE">
+												<!-- 取血者名称 -->
+												<name>李四</name>
+											</playingEntity>
+										</participantRole>
+									</participant>
+									<!-- 输血指征(输血适应症) 扩展 -->
+									<entryRelationship typeCode="COMP">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="DE06.00.340.00" codeSystem="1.2.156.112722.1.2.3.15" codeSystemName="卫生信息数据元目录" displayName="输血指征"/>
+											<value xsi:type="ST">受血者接受输血治疗的指征描述</value>
+										</observation>
+									</entryRelationship>
+									<!--输血品种代码 扩展-->
+									<entryRelationship typeCode="COMP">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="DE08.50.040.00" codeSystem="1.2.156.112722.1.2.3.15" codeSystemName="卫生信息数据元目录" displayName="输血品种代码"/>
+											<value xsi:type="CD" code="1" displayName="红细胞" codeSystem="1.2.156.112722.1.1.67" codeSystemName="输血品种代码表"/>
+										</observation>
+									</entryRelationship>
+									<!--输血量（mL）扩展 -->
+									<entryRelationship typeCode="COMP">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="DE06.00.267.00" codeSystem="1.2.156.112722.1.2.3.15" codeSystemName="卫生信息数据元目录" displayName="输血量（mL）"/>
+											<value xsi:type="PQ" value="300" unit="mL"/>
+										</observation>
+									</entryRelationship>
+									<!--输血反应标志 扩展-->
+									<entryRelationship typeCode="COMP">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="DE06.00.264.00" codeSystem="1.2.156.112722.1.2.3.15" codeSystemName="卫生信息数据元目录" displayName="输血反应标志"/>
+											<value xsi:type="BL" value="false"/>
+										</observation>
+									</entryRelationship>
+									<!-- 处理措施 扩展 -->
+									<entryRelationship typeCode="COMP">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="0673" codeSystem="1.2.156.112722.1.1.39" codeSystemName="CDR自定义" displayName="处理措施"/>
+											<!-- 处理措施  -->
+											<value xsi:type="ST">处理措施文本</value>
+										</observation>
+									</entryRelationship>
+									<entryRelationship typeCode="SPRT ">
+										<observation classCode="OBS" moodCode="EVN">
+											<code/>
+											<statusCode code="completed"/>
+											<!-- 配血日期 -->
+											<effectiveTime value="20140303102010"/>
+											<!-- 交叉配血总结果 -->
+											<value xsi:type="ST">不相交</value>
+											<performer typeCode="PRF">
+												<assignedEntity classCode="ASSIGNED">
+													<!-- 配血者编码 -->
+													<id extension="01002" root="1.2.156.112722.1.1.34"/>
+													<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+														<!-- 配血者名称 -->
+														<name>张三</name>
+													</assignedPerson>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<observation classCode="OBS" moodCode="EVN">
+													<code code="41902000" codeSystem="1.2.156.112722.1.2.3.13" codeSystemName="SNOMED CT" displayName="major crossmatch"/>
+													<!-- 主侧交叉配血结果  -->
+													<value xsi:type="ST">不相交</value>
+												</observation>
+											</entryRelationship>
+											<entryRelationship typeCode="COMP">
+												<observation classCode="OBS" moodCode="EVN">
+													<code code="90798005" codeSystem="1.2.156.112722.1.2.3.13" codeSystemName="SNOMED CT" displayName="minor crossmatch"/>
+													<!-- 次侧交叉配血结果 -->
+													<value xsi:type="ST">不相交</value>
+												</observation>
+											</entryRelationship>
+										</observation>
+									</entryRelationship>
+								</supply>
+							</entryRelationship>
+						</substanceAdministration>
+					</entry>
+				</section>
+			</component>
+			<!--
+********************************************************
+检验结果章节
+********************************************************
+-->
+			<component>
+				<section>
+					<!-- 章节编码 -->
+					<code code="34075-2" codeSystem="1.2.156.112722.1.1.52" codeSystemName="LOINC" displayName="Laboratory tests section "/>
+					<!-- 章节标题 -->
+					<title>检验结果</title>
+					<!--检验结果-->
+					<entry>
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<statusCode code="completed"/>
+							<!-- 复检ABO血型 -->
+							<component>
+								<observation moodCode="EVN" classCode="OBS">
+									<!-- 复检ABO血型项目编码 -->
+									<code code="365637002" codeSystem="1.2.156.112722.1.1.19" codeSystemName="SNOMED CT" displayName="ABO blood group"/>
+									<!-- 复检ABO血型结果编码 复检ABO血型结果名称 -->
+									<value xsi:type="CD" code="01" codeSystem="1.2.156.112722.1.1.19" displayName="A型"/>
+									<performer>
+										<assignedEntity>
+											<!--血型复核人ID-->
+											<id root="1.2.156.112722.1.1.34" extension="9876"/>
+											<assignedPerson>
+												<!--血型复核人姓名-->
+												<name>张三</name>
+											</assignedPerson>
+										</assignedEntity>
+									</performer>
+								</observation>
+							</component>
+							<!-- 复检Rh血型 -->
+							<component>
+								<observation moodCode="EVN" classCode="OBS">
+									<!-- 复检Rh血型项目编码 -->
+									<code code="365638007" codeSystem="1.2.156.112722.1.1.20" codeSystemName="SNOMED CT" displayName="rh blood group"/>
+									<!-- 复检Rh血型结果编码 复检Rh血型结果名称 -->
+									<value xsi:type="CD" code="01" codeSystem="1.2.156.112722.1.1.20" displayName="阳"/>
+								</observation>
+							</component>
+							<!-- 不规则抗体筛查 -->
+							<component>
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- 项目编码/项目名称(没有编码去掉@code) -->
+									<code code="115499008_1" codeSystem="1.2.156.112722.1.1.66" displayName="不规则抗体筛查"/>
+									<!-- 项目结果 -->
+									<value xsi:type="ST">阳</value>
+								</observation>
+							</component>
+							<!-- 直接抗人球试验 -->
+							<component>
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- 项目编码/项目名称(没有编码去掉@code) -->
+									<code code="115499008_11" codeSystem="1.2.156.112722.1.1.66" displayName="直接抗人球试验"/>
+									<!-- 项目结果 -->
+									<value xsi:type="ST">阳</value>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+				</section>
+			</component>
+			<!-- 
+********************************************************
+备注
+********************************************************
+-->
+			<component>
+				<section>
+					<code code="48767-8" codeSystem="1.2.156.112722.1.2.3.16" codeSystemName="LOINC" displayName="Annotation comment"/>
+					<title>备注</title>
+					<!-- 备注 -->
+					<text>血液一经发布，一律不得退回。此单需入病历。</text>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>

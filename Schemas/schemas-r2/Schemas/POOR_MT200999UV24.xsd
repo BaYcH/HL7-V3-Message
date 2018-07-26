@@ -258,11 +258,34 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
                      minOccurs="1"
                      maxOccurs="1"/>
       </xs:sequence>
+      
       <xs:attributeGroup ref="InfrastructureRootAttributes"/>
       <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
       <xs:attribute name="typeCode" type="ParticipationType" use="optional" fixed="CON"/>
       <xs:attribute name="contextControlCode" type="ContextControl" use="optional" default="OP"/>
    </xs:complexType>
+   
+   <xs:complexType name="POOR_MT200999UV.Participant">
+      <xs:sequence>
+         <xs:group ref="InfrastructureRootElements"/>
+         <xs:element name="functionCode" type="CD" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="noteText" type="ED" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="time" type="IVL_TS" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="assignedPerson" type="COCT_MT090100UV01.AssignedPerson" nillable="true"
+            minOccurs="0"
+            maxOccurs="1"/>
+         <xs:element name="assignedOrganization" type="COCT_MT150000UV02.Organization"
+            nillable="true"
+            minOccurs="0"
+            maxOccurs="1"/>
+      </xs:sequence>
+      
+      <xs:attributeGroup ref="InfrastructureRootAttributes"/>
+      <xs:attribute name="nullFlavor" type="NullFlavor" use="optional"/>
+      <xs:attribute name="typeCode" type="ParticipationType" use="optional" fixed="CON"/>
+      <xs:attribute name="contextControlCode" type="ContextControl" use="optional" default="OP"/>
+   </xs:complexType>
+   
    <xs:complexType name="POOR_MT200999UV.Consumable1">
       <xs:sequence>
          <xs:group ref="InfrastructureRootElements"/>
@@ -1561,6 +1584,10 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:element name="consultant" type="POOR_MT200999UV.Consultant" nillable="true"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
+         <xs:element name="participant" type="POOR_MT200999UV.Participant" nillable="true"
+            minOccurs="0"
+            maxOccurs="unbounded"/>
+         
          <xs:element name="callBackContact" type="POOR_MT200999UV.CallBackContact" nillable="true"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
