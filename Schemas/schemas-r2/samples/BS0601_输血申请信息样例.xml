@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POOR_IN200901UV24 ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:v3 ../Schemas/POOR_IN200901UV24.xsd ">
+	<!--消息ID -->
+	<id root="1.2.156.112722.1.2.1.19" extension="0780e8f941664d36afcdd764bfb28b2d"/>
+	<!--消息创建时间 -->
+	<creationTime value="20120119143926" />
+	<!--交互ID -->
+	<interactionId root="1.2.156.112722.1.3.1" extension="POOR_IN200901UV24" />
+	<!-- 服务ID -->
+	<profileId>
+		<item root="1.2.156.112722.1.1.32" extension="BS0601"/>
+	</profileId>
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current 
+		processing) -->
+	<processingModeCode code="R" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="NE" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id>
+				<item root="1.2.156.112722.1.1.31" extension=""/>
+			</id>
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id>
+				<item root="1.2.156.112722.1.1.31" extension=""/>
+			</id>
+		</device>
+	</sender>
+	<!--封装的消息内容 -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 消息交互类型 @code: 新增 :new -->
+		<code code="new" />
+		<!--主体 -->
+		<subject nullFlavor="NI" typeCode="SUBJ">
+			<!--血液申请单 -->
+			<supplyRequest classCode="SPLY" moodCode="RQO">
+				<!--申请单号 必须项已使用 -->
+				<id>
+					<item extension="11001893" />
+				</id>
+				<!--未使用，必须项 （申请单类型） -->
+				<code code="" codeSystem="">
+					<displayName value=""></displayName>
+				</code>
+				<!-- 医嘱内容 -->
+				<text value="test" />
+				<!--未使用，必须项 -->
+				<statusCode code="active" />
+				<!--申请时间 -->
+				<effectiveTime xsi:type="IVL_TS">
+					<any value="201201041245" />
+				</effectiveTime>
+				<!--用血紧急程度 -->
+				<priorityCode code="01" codeSystem="1.2.156.112722.1.1.59">
+					<displayName value="特急" />
+				</priorityCode>
+				<!--用血时间 -->
+				<expectedUseTime>
+					<any value="201202072134" />
+				</expectedUseTime>
+				<!--病人信息 -->
+				<subject typeCode="SBJ">
+					<!--病人 -->
+					<patient classCode="PAT">
+						<!--病人编号 -->
+						<id>
+							<!--域ID -->
+							<item root="1.2.156.112722.1.2.1.2" extension="1244322211" />
+							<!-- 患者ID -->
+							<item root="1.2.156.112722.1.2.1.3" extension="001407878200" />
+							<!-- 就诊卡号 -->
+							<item root="1.2.156.112722.1.2.1.7" extension="4153754" />
+						</id>
+						<!-- 病区、床位 -->
+						<addr xsi:type="BAG_AD">
+							<item use="TMP">
+							    <!-- 病区编码/病区名称 -->
+								<part type="BNR" value="10C" code="1000068" codeSystem="1.2.156.112722.1.1.33" />
+								<!-- value对应于床号，code值对应床位编码 -->
+								<part type="CAR" value="02"  code="12321"/>
+							</item>
+						</addr>
+						<!--联系电话 -->
+						<telecom xsi:type="BAG_TEL">
+							<item use="WP" value="1324354541" />
+						</telecom>
+						<!-- 病人信息隐私级别 -->
+						<confidentialityCode>
+							<item code="001" codeSystem="1.2.156.112722.1.1.60">
+								<displayName value="高" />
+							</item>
+						</confidentialityCode>
+						<!--个人信息 -->
+						<patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!--身份证号/献血证号 -->
+							<id>
+								<item root="1.2.156.112722.1.2.1.4" extension="15001198807080982" />
+								<item root="1.2.156.112722.1.2.1.38" extension="2839074" />
+							</id>
+							<!--姓名 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="和三" />
+								</item>
+							</name>
+							<!--性别编码 -->
+							<administrativeGenderCode code="1"
+								codeSystem="1.2.156.112722.1.1.9" />
+							<!--生日 -->
+							<birthTime value="19820230">
+								<originalText value="29" />
+							</birthTime>
+							<!--地址 -->
+							<addr xsi:type="LIST_AD">
+								<!--地址 -->
+								<item use="H">
+									<part type="AL" value="北京市海淀区中关一街46号" />
+								</item>
+							</addr>
+							<!--婚姻状况编码 -->
+							<maritalStatusCode code="01" codeSystem="1.2.156.112722.1.1.4">
+							</maritalStatusCode>
+							<!--联系人 -->
+							<contactParty classCode="CON">
+								<!--联系人电话 -->
+								<telecom xsi:type="BAG_TEL">
+									<item use="MC" value="1324674221 " />
+								</telecom>
+								<!--联系人姓名 -->
+								<contactPerson>
+									<name xsi:type="BAG_EN">
+										<item use="IDE">
+											<part value="录涉 " />
+										</item>
+									</name>
+								</contactPerson>
+							</contactParty>
+							<!--出生地 -->
+							<birthPlace>
+								<addr use="H">
+									<part type="AL" value="北京大学第一医院" />
+								</addr>
+							</birthPlace>
+						</patientPerson>
+						<!--病人科室 -->
+						<providerOrganization classCode="ORG"
+							determinerCode="INSTANCE">
+							<!--病人科室编码-->
+							<id>
+								<item extension="140988948" root="1.2.156.112722.1.1.15"/>
+							</id>
+							<!--病人科室名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="检验科微生物室" />
+								</item>
+							</name>
+							<asOrganizationPartOf classCode="PART">
+								<wholeOrganization determinerCode="INSTANCE" classCode="ORG">
+									<!--医疗机构分院区代码 -->
+									<id>
+										<item extension="46600083-8"/>
+									</id>
+									<!--医疗机构分院区名称 -->
+									<name xsi:type="BAG_EN">
+										<item><part value="江苏省人民医院1分院" /></item>
+									</name>
+									<asOrganizationPartOf classCode="PART">
+										<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+											<!--医疗机构代码 -->
+											<id>
+												<item extension="400010558"/>
+											</id>
+											<!--医疗机构名称 -->
+											<name xsi:type="BAG_EN">
+												<item><part value="北京大学第一医院" /></item>
+											</name>
+										</wholeOrganization>
+									</asOrganizationPartOf>
+								</wholeOrganization>
+							</asOrganizationPartOf>
+						</providerOrganization>
+						<!-- 病人费别 -->
+						<coveredPartyOf typeCode="COV">
+							<coverageRecord classCode="COV" moodCode="EVN">
+								<component typeCode="COMP">
+									<policyOrProgram classCode="COV" moodCode="EVN">
+										<!-- 费用类别必须项已使用 -->
+										<code code="1" codeSystem="1.2.156.112722.1.1.61/1.2.156.112722.1.1.62"/>
+										<!-- 必须项未使用 -->
+										<coveredParty typeCode="COV" nullFlavor="NI">
+											<coveredParty classCode="COVPTY">
+												<id />
+											</coveredParty>
+										</coveredParty>
+									</policyOrProgram>
+								</component>
+							</coverageRecord>
+						</coveredPartyOf>
+					</patient>
+				</subject>
+				<!--申请人 -->
+				<author typeCode="AUT">
+					<!--申请医师 必须项已使用 -->
+					<assignedEntity classCode="ASSIGNED">
+						<!--申请医师编码 -->
+						<id>
+							<item root="1.2.156.112722.1.1.34" extension="12472" />
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE"
+							xsi:nil="false">
+							<!--申请医师姓名 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="吕材双" />
+								</item>
+							</name>
+						</assignedPerson>
+						<!--申请科室 -->
+						<representedOrganization classCode="ORG"
+							determinerCode="INSTANCE">
+							<!--申请科室编码 必须项已使用 -->
+							<id>
+								<item root="1.2.156.112722.1.1.15" extension="1010700" />
+							</id>
+							<!--申请科室名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="检验科" />
+								</item>
+							</name>
+						</representedOrganization>
+					</assignedEntity>
+				</author>
+				<!-- 辅助科室 -->
+				<participant typeCode="CON">
+					<assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+						<!-- 辅助科室标识 -->
+						<id>
+							<item root="1.2.345" extension="2434"/>
+						</id>
+						<!-- 辅助科室名称 -->
+						<name xsi:type="BAG_EN">
+							<item>
+								<part value="辅助科室名称"/>
+							</item>
+						</name>
+					</assignedOrganization>
+				</participant>
+				
+				<!-- 确认人 -->
+				<verifier typeCode="VRF" contextControlCode="OP">
+					<!-- 确认时间 -->
+					<time value="2005101010" />
+					<assignedEntity classCode="ASSIGNED">
+						<!-- 确认人编码 -->
+						<id>
+							<item root="1.2.156.112722.1.1.34" extension="0832" />
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 确认人姓名 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="晃晃" />
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedEntity>
+				</verifier>
+				
+				
+				<!-- 1..n可多项：临床诊断 -->
+				<reason contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+						<!-- 诊断类别编码 -->
+						<code code="01" codeSystem="1.2.156.112722.1.1.42">
+							<!-- 诊断类别名称 -->
+							<displayName value="门诊诊断"></displayName>
+						</code>
+						<!-- 状态,模型中要求. 这里使用值为'active' -->
+						<statusCode code="active" />
+						<!-- 疾病编码 -->
+						<value xsi:type="CD" code="23334077" codeSystem="1.2.156.112722.1.1.43">
+							<!-- 疾病名称 -->
+							<displayName value="肺炎"></displayName>
+						</value>
+					</observation>
+				</reason>
+				<!-- 诊断依据/治疗目的 -->
+				<reason contextConductionInd="false" typeCode="RSON">
+					<!-- 输血目的 -->
+					<observation classCode="OBS" moodCode="EVN">
+						<!-- 输血目的编码 -->
+						<code code="1" codeSystem="1.2.156.112722.1.1.63" />
+						<statusCode code="active" />
+						<!-- 输血目的描述 -->
+						<value xsi:type="ST" value="纠正急性输血" />
+					</observation>
+				</reason>
+
+			
+				<!-- 临床路径项目编号 -->
+				<pertinentInformation typeCode="PERT" contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+						<code code="0210"  codeSystem="1.2.156.112722.1.1.39" >
+							<displayName value="临床路径项目编号"/>
+						</code>
+						<value xsi:type="ST" value="11184"/>
+					</observation>
+				</pertinentInformation>	
+								
+				<!-- 临床路径项目序号 -->
+				<pertinentInformation typeCode="PERT" contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+						<code code="0211" codeSystem="1.2.156.112722.1.1.39">
+							<displayName value="临床路径项目序号"/>
+						</code>
+						<value xsi:type="ST" value="1"/>
+					</observation>
+				</pertinentInformation>
+				<!-- 业务操作时间  -->
+				<pertinentInformation typeCode="PERT"
+					contextConductionInd="false">
+					<observation classCode="OBS" moodCode="INT">
+						<code code="0202" codeSystem="1.2.156.112722.1.1.39">
+							<displayName value="业务操作时间" />
+						</code>
+						<value xsi:type="ST" value="20160823" />
+					</observation>
+				</pertinentInformation>
+				<!--  病史和自身输血 ：怀孕标记，生产标记，是否有输血史，是否有不良输血史等 -->
+				<pertinentInformation typeCode="PERT"
+					contextControlCode="AP" contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+						<!-- 布尔项目编码（怀孕标记，生产标记，是否有输血史，是否有不良输血史，是否自采血等）-->
+						<code code="01" codeSystem="1.2.156.112722.1.1.46" />
+						<!--描述：如怀孕填写怀孕次数，生产填写生产次数。没有可删除 -->
+						<text value=""></text>
+						<!-- 布尔值 true/false -->
+						<value xsi:type="ST" value="true" />
+					</observation>
+				</pertinentInformation>				
+
+				<!-- 输血申请检验项目编码： 0..n可循环 （HBsAg, Hb, HBsAb, HCT, HBeAg PLT, HBeAb, WBC, 
+					HBcAb, ALT, Anti-HCV, 梅毒, Anti-HIV） -->
+				<!-- 检查检验: ABO血型(病人血型), Rh(D)血型 -->
+				<pertinentInformation typeCode="PERT"
+					contextControlCode="AP" contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+						<!-- #CD类型-->
+						<!-- 检验子项目编码 -->
+						<code code="1001" codeSystem="1.2.156.112722.1.1.21" />
+						
+						<!-- 验血日期 -->
+						<effectiveTime xsi:type="IVL_TS">
+							<any value="201201041245" />
+						</effectiveTime>
+						<!-- 检验结果值为术语形式：ABO血型code/Rh(D)code -->
+						<value xsi:type="CD" code="1001"
+							codeSystem="1.2.156.112722.1.1.19/1.2.156.112722.1.1.20">
+							<!--ABO血型值/Rh(D)值 -->
+							<displayName value="A型"></displayName>
+						</value>
+					</observation>
+				</pertinentInformation>
+				<pertinentInformation typeCode="PERT"
+					contextControlCode="AP" contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+						<!-- #ST类型-->
+						<!--检验子项目编码-->
+						<code code="1002" codeSystem="1.2.156.112722.1.1.66"></code>
+						<!-- 检验结果值为字符串：HBsAg, HBsAb, HBeAg, HBeAb,HBcAb,Anti-HCV, 梅毒 等 -->
+						<value xsi:type="ST" value="阴性" />
+					</observation>
+				</pertinentInformation>
+				<pertinentInformation typeCode="PERT"
+					contextControlCode="AP" contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+						<!-- #PQ类型-->
+						<!-- 检验子项目编码 -->
+						<code code="1003" codeSystem="1.2.156.112722.1.1.66"></code>
+						<!-- 检验结果值为计量单位：Hb编码\PLT编码\FIB编码... value="检验结果值" unit="计量单位-->
+						<value xsi:type="PQ" value="1" unit="g/L"/>
+					</observation>
+				</pertinentInformation>
+			    <!-- 申请血液信息 （可循环） -->
+				<component2>
+					<supplyRequest classCode="SPLY" moodCode="RQO">
+						<!-- 医嘱号/申请单号 -->
+						<id>
+							<item extension="321435"/>
+							<item extension="44554"/>
+						</id>
+						<!-- 输血品种代码 -->
+						<code code="2" codeSystem="1.2.156.112722.1.1.67">
+							<!-- 输血品种名称 -->
+							<displayName value="浓缩红细胞"></displayName>
+						</code>
+						<!-- 医嘱内容 -->
+						<text value="医嘱内容"></text>
+						<statusCode/>
+						<!-- 申请剂量/剂量单位 -->
+						<quantity value="1000" unit="ml"/>
+						<!--执行科室/执行人-->
+						<performer typeCode="PRF">
+							<assignedEntity classCode="ASSIGNED">
+								<!--执行人工号-->
+								<id>
+									<item root="" extension=""/>
+								</id>
+								<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="执行人姓名"/>
+										</item>
+									</name>
+								</assignedPerson>
+								<!--执行科室-->
+								<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+									<id></id>
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="执行人科室"/>
+										</item>
+									</name>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+						
+						<!-- 申请ABO血型编码 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112722.1.1.19">
+									<displayName value="ABO血型"/>
+								</code>
+								<value xsi:type="CD" code="1">
+								    <displayName value="A"/>
+								</value>
+							</observation>
+						</pertinentInformation>
+						<!-- 申请RH血型编码 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112722.1.1.20" >
+									<displayName value="RH血型"/>
+								</code>
+								<value xsi:type="CD" code="1">
+								    <displayName value="阳性"/>
+								</value>
+							</observation>
+						</pertinentInformation>
+						<!-- 血液特殊要求: 辐照，异型输血，市站特配，过滤白细胞 -->
+						<!-- 多个可循环 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112722.1.1.68">
+									<displayName value="血液特殊要求"/>
+								</code>
+								<value xsi:type="CD" code="1">
+								    <displayName value="阳性"/>
+								</value>
+							</observation>
+						</pertinentInformation>
+						<!-- 收费状态标识  -->
+										<pertinentInformation typeCode="PERT"
+											contextConductionInd="false">
+											<observation classCode="OBS" moodCode="INT">
+											
+												<code code="0102" codeSystem="1.2.156.112722.1.1.39">
+													<displayName value="收费状态标识" />
+												</code>
+												<effectiveTime xsi:type="IVL_TS">
+													<any value="20180101"/>
+												</effectiveTime>
+												<value xsi:type="ST" value="0" />
+												
+											</observation>
+						
+						</pertinentInformation>
+						<!-- 申请单金额 -->
+										<pertinentInformation typeCode="PERT"
+											contextConductionInd="false">
+											<observation classCode="OBS" moodCode="INT">
+												<code code="0110" codeSystem="1.2.156.112722.1.1.39">
+													<displayName value="申请单金额" />
+												</code>
+												<value xsi:type="PQ" value="300" unit="RMB"/>
+											</observation>
+										</pertinentInformation>
+						<!-- 工伤标志  -->
+										<pertinentInformation typeCode="PERT"
+											contextConductionInd="false">
+											<observation classCode="OBS" moodCode="INT">
+												<code code="0104" codeSystem="1.2.156.112722.1.1.39">
+													<displayName value="工伤标志" />
+												</code>
+												<value xsi:type="ST" value="0" />
+											</observation>
+										</pertinentInformation>
+						
+						<!-- 备血信息 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112722.1.2.3.13">
+									<displayName value="备血信息"/>
+								</code>
+								<author typeCode="AUT">
+									<relatedEntity classCode="ASSIGNED">
+										<!-- 备血人编码 -->
+										<id>
+											<item extension="" root=""/>
+										</id>
+										<relatedPerson classCode="PSN" determinerCode="INSTANCE">
+											<name>
+												<item>
+													<part value="备血人姓名"/>
+												</item>
+											</name>
+										</relatedPerson>
+									</relatedEntity>
+								</author>
+							</observation>
+						</pertinentInformation>
+						<!-- 取血信息 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112722.1.2.3.14">
+									<displayName value="取血信息"/>
+								</code>
+								<author typeCode="AUT">
+									<relatedEntity classCode="ASSIGNED">
+										<!-- 取血人编码 -->
+										<id>
+											<item extension="" root=""/>
+										</id>
+										<relatedPerson classCode="PSN" determinerCode="INSTANCE">
+											<name>
+												<item>
+													<part value="取血人姓名"/>
+												</item>
+											</name>
+										</relatedPerson>
+									</relatedEntity>
+								</author>
+							</observation>
+						</pertinentInformation>
+						<!-- 输血人信息 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112722.1.2.3.15">
+									<displayName value="输血人信息"/>
+								</code>
+								<author typeCode="AUT">
+									<relatedEntity classCode="ASSIGNED">
+										<!-- 输血人编码 -->
+										<id>
+											<item extension="" root="1.2.156.112722.1.1.34"/>
+										</id>
+										<relatedPerson classCode="PSN" determinerCode="INSTANCE">
+											<name>
+												<item>
+													<part value="输血人姓名"/>
+												</item>
+											</name>
+										</relatedPerson>
+									</relatedEntity>
+								</author>
+							</observation>
+						</pertinentInformation>						
+						
+						<!-- 备血、取血、输血过程标识  -->
+						<pertinentInformation typeCode="PERT"
+							contextConductionInd="false">
+							<observation classCode="OBS" moodCode="INT">
+								<code code="0112" codeSystem="1.2.156.112722.1.1.39">
+									<displayName value="过程标识" />
+								</code>
+								<!-- 过程标识编码与名称 -->
+								<value xsi:type="CD" code="01" codeSystem="">
+									<displayName value=""/>
+								</value>
+							</observation>
+							
+						</pertinentInformation>
+						
+						<!-- 项目数量 -->
+						<subjectOf6 contextConductionInd="false" typeCode="SUBJ">
+							<seperatableInd value="false"/>
+							<annotation classCode="ACT" moodCode="EVN">
+								<!-- 项目数量 -->
+								<code code="04" codeSystem="yyyii">
+									<displayName value="数量"/>
+								</code>
+								<!-- 数量 -->
+								<text value="34"></text>
+								<statusCode code="completed"/>
+								<!--必须项 未使用 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf6>
+					</supplyRequest>
+				</component2>
+				<!--就诊 -->
+				<componentOf1 contextConductionInd="false" typeCode="COMP">
+					<!--就诊信息 -->
+					<encounter classCode="ENC" moodCode="EVN">
+						<id>
+						    <!-- 就诊次数 -->
+							<item extension="2" root="1.2.156.112722.1.2.1.22"/>
+							<!-- 就诊流水号 -->
+							<item extension="123456" root="1.2.156.112722.1.2.1.21"/>
+						</id>
+						
+						<!--就诊类别编码-->
+						<code codeSystem="1.2.156.112722.1.1.41" code="01">
+							<!-- 就诊类别名称 -->
+							<displayName value="门诊/住院/体检" />
+						</code>
+						<!--就诊状态,模型中要求,值为'active' 必须项未使用 -->
+						<statusCode code="active" />
+						<!-- 就诊/住院时间 -->
+						<effectiveTime>
+							<any value="2012010310" />
+						</effectiveTime>
+						<!--病人,未使用,在模型中的最小出现次数为'1' 必须项未使用 -->
+						<subject typeCode="SBJ">
+							<patient classCode="PAT" />
+						</subject>
+					</encounter>
+				</componentOf1>
+			</supplyRequest>
+		</subject>
+	</controlActProcess>
+</POOR_IN200901UV24>

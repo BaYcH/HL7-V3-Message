@@ -117,6 +117,7 @@ StaticMifToXsd.xsl version 2.0</xs:documentation>
          <xs:element name="quantity" type="PQ" minOccurs="0" maxOccurs="1"/>
          <xs:element name="name" type="EN" minOccurs="0" maxOccurs="1"/>
          <xs:element name="formCode" type="CD" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="expirationTime" type="IVL_TS" minOccurs="0" maxOccurs="1"/>
          <xs:element name="asManufacturedProduct" type="POOR_MT200999UV.ManufacturedProduct"
                      nillable="true"
                      minOccurs="0"
