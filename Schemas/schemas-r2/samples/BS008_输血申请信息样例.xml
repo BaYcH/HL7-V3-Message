@@ -49,7 +49,7 @@
 				<code code="" codeSystem="">
 					<displayName value=""></displayName>
 				</code>
-				<!--备注 -->
+				<!-- 医嘱内容 -->
 				<text value="test" />
 				<!--未使用，必须项 -->
 				<statusCode code="active" />
@@ -164,14 +164,26 @@
 							</name>
 							<asOrganizationPartOf classCode="PART">
 								<wholeOrganization determinerCode="INSTANCE" classCode="ORG">
-									<!--医疗机构代码 -->
+									<!--医疗机构分院区代码 -->
 									<id>
 										<item extension="46600083-8"/>
 									</id>
-									<!--医疗机构名称 -->
+									<!--医疗机构分院区名称 -->
 									<name xsi:type="BAG_EN">
-										<item><part value="江苏省人民医院" /></item>
+										<item><part value="江苏省人民医院1分院" /></item>
 									</name>
+									<asOrganizationPartOf classCode="PART">
+										<wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+											<!--医疗机构代码 -->
+											<id>
+												<item extension="46600083-8"/>
+											</id>
+											<!--医疗机构名称 -->
+											<name xsi:type="BAG_EN">
+												<item><part value="江苏省人民医院" /></item>
+											</name>
+										</wholeOrganization>
+									</asOrganizationPartOf>
 								</wholeOrganization>
 							</asOrganizationPartOf>
 						</providerOrganization>
@@ -247,6 +259,8 @@
 						</assignedPerson>
 					</assignedEntity>
 				</verifier>
+					
+				
 				<!-- 1..n可多项：临床诊断 -->
 				<reason contextConductionInd="false">
 					<observation classCode="OBS" moodCode="EVN">
@@ -379,6 +393,32 @@
 						<statusCode/>
 						<!-- 申请剂量/剂量单位 -->
 						<quantity value="1000" unit="ml"/>
+						<!--执行科室/执行人-->
+						<performer typeCode="PRF">
+							<assignedEntity classCode="ASSIGNED">
+								<!--执行人工号-->
+								<id>
+									<item root="" extension=""/>
+								</id>
+								<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="执行人姓名"/>
+										</item>
+									</name>
+								</assignedPerson>
+								<!--执行科室-->
+								<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+									<id></id>
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="执行人科室"/>
+										</item>
+									</name>
+								</representedOrganization>
+							</assignedEntity>
+						</performer>
+						
 						<!-- 申请ABO血型编码 -->
 						<pertinentInformation typeCode="PERT" contextConductionInd="false">
 							<observation classCode="OBS" moodCode="EVN">
@@ -413,6 +453,130 @@
 								</value>
 							</observation>
 						</pertinentInformation>
+						<!-- 收费状态标识  -->
+										<pertinentInformation typeCode="PERT"
+											contextConductionInd="false">
+											<observation classCode="OBS" moodCode="INT">
+											
+												<code code="0102" codeSystem="1.2.156.112635.1.1.120">
+													<displayName value="收费状态标识" />
+												</code>
+												<effectiveTime xsi:type="IVL_TS">
+													<any value="20180101"/>
+												</effectiveTime>
+												<value xsi:type="ST" value="0" />
+												
+											</observation>
+						
+						</pertinentInformation>
+						<!-- 申请单金额 -->
+										<pertinentInformation typeCode="PERT"
+											contextConductionInd="false">
+											<observation classCode="OBS" moodCode="INT">
+												<code code="0110" codeSystem="1.2.156.112635.1.1.120">
+													<displayName value="申请单金额" />
+												</code>
+												<value xsi:type="PQ" value="300" unit="RMB"/>
+											</observation>
+										</pertinentInformation>
+						<!-- 工伤标志  -->
+										<pertinentInformation typeCode="PERT"
+											contextConductionInd="false">
+											<observation classCode="OBS" moodCode="INT">
+												<code code="0104" codeSystem="1.2.156.112635.1.1.120">
+													<displayName value="工伤标志" />
+												</code>
+												<value xsi:type="ST" value="0" />
+											</observation>
+										</pertinentInformation>
+						
+						<!-- 备血信息 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112635.1.1.109">
+									<displayName value="备血信息"/>
+								</code>
+								<author typeCode="AUT">
+									<relatedEntity classCode="ASSIGNED">
+										<!-- 备血人编码 -->
+										<id>
+											<item extension="" root=""/>
+										</id>
+										<relatedPerson classCode="PSN" determinerCode="INSTANCE">
+											<name>
+												<item>
+													<part value="备血人姓名"/>
+												</item>
+											</name>
+										</relatedPerson>
+									</relatedEntity>
+								</author>
+							</observation>
+						</pertinentInformation>
+						<!-- 取血信息 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112635.1.1.109">
+									<displayName value="取血信息"/>
+								</code>
+								<author typeCode="AUT">
+									<relatedEntity classCode="ASSIGNED">
+										<!-- 取血人编码 -->
+										<id>
+											<item extension="" root=""/>
+										</id>
+										<relatedPerson classCode="PSN" determinerCode="INSTANCE">
+											<name>
+												<item>
+													<part value="取血人姓名"/>
+												</item>
+											</name>
+										</relatedPerson>
+									</relatedEntity>
+								</author>
+							</observation>
+						</pertinentInformation>
+						<!-- 输血人信息 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<observation classCode="OBS" moodCode="EVN">
+								<code codeSystem="1.2.156.112635.1.1.109">
+									<displayName value="输血人信息"/>
+								</code>
+								<author typeCode="AUT">
+									<relatedEntity classCode="ASSIGNED">
+										<!-- 输血人编码 -->
+										<id>
+											<item extension="" root=""/>
+										</id>
+										<relatedPerson classCode="PSN" determinerCode="INSTANCE">
+											<name>
+												<item>
+													<part value="输血人姓名"/>
+												</item>
+											</name>
+										</relatedPerson>
+									</relatedEntity>
+								</author>
+							</observation>
+						</pertinentInformation>						
+						
+						<!-- 项目数量 -->
+						<subjectOf6 contextConductionInd="false" typeCode="SUBJ">
+							<seperatableInd value="false"/>
+							<annotation classCode="ACT" moodCode="EVN">
+								<!-- 项目数量 -->
+								<code code="04" codeSystem="yyyii">
+									<displayName value="数量"/>
+								</code>
+								<!-- 数量 -->
+								<text value="34"></text>
+								<statusCode code="completed"/>
+								<!--必须项 未使用 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf6>
 					</supplyRequest>
 				</component2>
 				<!--就诊 -->
