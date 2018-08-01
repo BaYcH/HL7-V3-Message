@@ -41,8 +41,13 @@
 			<id root="1.2.156.112635.1.2.1.3" extension="333"/>
 			<!-- 就诊号 -->
 			<id root="1.2.156.112635.1.2.1.12" extension="121212"/>
+			<!-- 住院号 -->
+			<id root="1.2.156.112635.1.2.1.13" extension="121212"/>
+			
 			<!-- 病人基本信息 -->
 			<patient classCode="PSN" determinerCode="INSTANCE">
+				<!-- 身份证号 -->
+				<id root="1.2.244444" extension="1243554646"/>
 				<!-- 患者名称 -->
 				<name>刘小三</name>
 				<!-- 性别编码/性别名称 -->
@@ -51,7 +56,6 @@
 				<birthTime value="20000101"/>
 			</patient>
 			<providerOrganization classCode="ORG" determinerCode="INSTANCE">
-				<
 			</providerOrganization>
 		</patientRole>
 	</recordTarget>
@@ -90,8 +94,10 @@
 	<!-- 关联的服务事件信息 -->
 	<documentationOf>
 		<serviceEvent>
-			<!-- 服务ID -->
-			<id extension="BS360"/>
+			<!-- 服务ID，这个地方不是你们讲的服务，而是医疗服务，比如输血服务 -->
+			<id extension="输血服务ID"/>
+			<!-- 输血日期时间 -->
+			<effectiveTime value="20180101"/>
 		</serviceEvent>
 	</documentationOf>
 	<!-- 文档中医疗卫生事件的就诊场景 -->
@@ -211,6 +217,18 @@ CDA Body
 					</entry>
 				</section>
 			</component>
+			<!-- 疾病诊断编码 -->
+			<component>
+				<section>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="疾病诊断" codeSystem="1.2344" displayName="疾病诊断"/>
+							<value xsi:type="CD" code="疾病诊断编码值" codeSystem="1.2.5555" displayName="疾病诊断名"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			
 			<!--
 ********************************************************
 输血记录章节
@@ -220,6 +238,7 @@ CDA Body
 				<section>
 					<code code="924-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Blood product dispensed"/>
 					<title>输血记录</title>
+					<text>输血过程记录</text>
 					<entry>
 						<substanceAdministration moodCode="RQO" classCode="SBADM">
 							<!-- 输血申请单ID -->
@@ -374,6 +393,43 @@ CDA Body
 										</observation>
 									</entryRelationship>
 								</supply>
+							</entryRelationship>
+							<!-- 输血史标识代码 -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="输血史标识代码" codeSystem="1.343545" displayName="输血史标识代码"/>
+									<value xsi:type="CD" code="输血史标识代码值" codeSystem="1.3434" displayName="输血史标识名称"/>
+								</observation>
+							</entryRelationship>
+							<!-- 输血性质代码 -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="输血性质代码" codeSystem="1.343545" displayName="输血性质代码"/>
+									<value xsi:type="CD" code="输血性质代码值" codeSystem="1.3434" displayName="输血性质名称"/>
+								</observation>
+							</entryRelationship>
+							<!-- 输血反应类型 -->
+							<entryRelationship typeCode="CAUS">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="输血反应类型" codeSystem="1.343545" displayName="输血反应类型"/>
+									<value xsi:type="CD" code="输血反应类型值" codeSystem="1.3434" displayName="输血反应类型名称"/>
+								</observation>
+							</entryRelationship>
+							<!-- 输血次数 -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="输血次数" codeSystem="1.343545" displayName="输血次数"/>
+									<value xsi:type="PQ" value="4" unit="次"/>
+								</observation>
+							</entryRelationship>
+							<!-- 输血原因 -->
+							<entryRelationship typeCode="RSON">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="输血原因" codeSystem="1.2.2323" displayName="输血原因"/>
+									<!-- 详细原因文本描述 -->
+									<text></text>
+									<value xsi:type="CD" codeSystem="1.2.345456" code="输血原因代码" displayName="输血原因名"/>
+								</observation>
 							</entryRelationship>
 						</substanceAdministration>
 					</entry>
